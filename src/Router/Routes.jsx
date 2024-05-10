@@ -4,6 +4,7 @@ import {
 import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home";
 import NotFound from "../Pages/Not Found/NotFound";
+import AuthLayout from "../Layouts/AuthLayout";
 
   const router = createBrowserRouter([
     {
@@ -17,6 +18,16 @@ import NotFound from "../Pages/Not Found/NotFound";
         }
       ],
     },
+    {
+        path: "/",
+        element: <AuthLayout/>,
+        errorElement: <NotFound/>,
+        children: [
+            {
+                path: "/login",
+            }
+        ]
+    }
   ]);
 
   export default router;
