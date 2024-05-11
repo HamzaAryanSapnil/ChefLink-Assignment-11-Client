@@ -17,7 +17,7 @@ import Login from "../Pages/Login/Login";
           element: <Home/>,
         },
         {
-          path: "/",
+          path: "/login",
           element: <Login/>,
         }
       ],
