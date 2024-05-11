@@ -22,15 +22,15 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium">
-        <NavLink to="/update_profile">Update Profile</NavLink>
+        <NavLink to="/all_foods">All Foods</NavLink>
       </li>
       {user ? (
         <>
           <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium" >
-            <NavLink to="/user_profile">User Profile</NavLink>
+            <NavLink to="/food_gallery">Food Gallery</NavLink>
           </li>
           <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium" >
-            <NavLink to="/property_details">Property Details</NavLink>
+            <NavLink to="/my_profile">My Profile</NavLink>
           </li>
         </>
       ) : (
