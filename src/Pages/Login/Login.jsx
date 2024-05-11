@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Auth Provider/AuthProvider";
 const Login = () => {
-  const {logIn} = useContext(AuthContext);
+  const {logIn, googleLogin, githubLogin} = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -19,7 +20,7 @@ const Login = () => {
     .then((result) => {
       const user = result.user;
       console.log(user);
-      navigate("/");
+      navigate(location?.state ? location.state : "/");
 
     })
     .catch((error) => {
@@ -27,6 +28,24 @@ const Login = () => {
     })
   };
   
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log("Google Login", result);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        console.log("Github Login", result);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
@@ -115,6 +134,18 @@ const Login = () => {
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
+          <div className="text-center">
+              <p className="text-center ">Or Login with</p>
+              <div className="flex justify-center items-center mt-2 gap-x-2">
+                <button onClick={handleGoogleLogin} className="btn">
+                  <i><img src={googleIcon} className="w-10 h-10" alt=""  /></i>
+                </button>
+
+                <button onClick={handleGithubLogin} className="btn">
+                  <i><img src={githubIcon}  alt="" /></i>
+                </button>
+              </div>
+            </div>
           <p className=" my-4 text-center">New to car doctor ? <Link to="/signup" className="text-appointBtnColor font-medium">Sign Up</Link> </p>
         </div>
       </div>
