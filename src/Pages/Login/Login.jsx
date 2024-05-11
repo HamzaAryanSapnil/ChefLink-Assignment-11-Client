@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Auth Provider/AuthProvider";
+import googleIcon from "../../assets/3d-fluency-google-logo.png";
+import githubIcon from "../../assets/github.png";
 const Login = () => {
   const {logIn, googleLogin, githubLogin} = useContext(AuthContext);
   const navigate = useNavigate();
@@ -137,11 +139,11 @@ const Login = () => {
           <div className="text-center">
               <p className="text-center ">Or Login with</p>
               <div className="flex justify-center items-center mt-2 gap-x-2">
-                <button onClick={handleGoogleLogin} className="btn">
+                <button onClick={handleGoogleLogin} className="btn btn-circle bg-transparent border-none">
                   <i><img src={googleIcon} className="w-10 h-10" alt=""  /></i>
                 </button>
 
-                <button onClick={handleGithubLogin} className="btn">
+                <button onClick={handleGithubLogin} className="btn btn-circle bg-transparent border-none">
                   <i><img src={githubIcon}  alt="" /></i>
                 </button>
               </div>
