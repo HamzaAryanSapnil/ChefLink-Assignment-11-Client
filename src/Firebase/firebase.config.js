@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB2p-CC3IP_GG_wprcz4pDSGHxc96tOZM8",
-  authDomain: "cheflink-assignment-11.firebaseapp.com",
-  projectId: "cheflink-assignment-11",
-  storageBucket: "cheflink-assignment-11.appspot.com",
-  messagingSenderId: "970919885121",
-  appId: "1:970919885121:web:eacd3c2eefef790de349c0"
+apiKey: import.meta.env.VITE_APIKEY,
+authDomain: import.meta.env.VITE_AUTHDOMAIN,
+projectId: import.meta.env.VITE_PROJECTID,
+storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase

@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Auth Provider/AuthProvider";
 const Signup = () => {
+  const {createUser, updateUserProfile} = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -10,7 +14,30 @@ const Signup = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    const email = data.email;
+    const password = data.password;
+    const name = data.firstName + " " + data.lastName;
+    const photoUrl = data.photoURL;
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        updateUserProfile(name, photoUrl)
+        .then(() => {
+          console.log("profile updated");
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+
   };
+
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">

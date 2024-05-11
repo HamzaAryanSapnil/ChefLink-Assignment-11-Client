@@ -5,7 +5,6 @@ import { AuthContext } from "../../../Auth Provider/AuthProvider";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
-  // console.log("from nav", user?.photoURL);
 
   const handleLogout = () => {
     logOut()
@@ -37,7 +36,7 @@ const Navbar = () => {
       ) : (
         <>
           <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium" >
-            <NavLink to="/register">Register</NavLink>
+            <NavLink to="/signup">Sign Up</NavLink>
           </li>
         </>
       )}
