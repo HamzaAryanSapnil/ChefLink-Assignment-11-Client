@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import BannerBtnRoundedFull from "../../../Components/Banner Btn/BannerBtnRoundedFull";
 import { Link } from "react-router-dom";
+import Top_Foods_Cards from "./Top Foods Cards/Top_Foods_Cards";
 
 const TopFoodsSection = () => {
   // get data from all food
@@ -25,9 +26,9 @@ const TopFoodsSection = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 container mx-auto justify-items-center justify-center items-center gap-4" >
         {topFoods.slice(0, 6).map((topFood) => (
-            <div key={topFood._id} >
-                <p>topFoods</p>
-            </div>
+          
+                <Top_Foods_Cards key={topFood._id} ></Top_Foods_Cards>
+         
         ))}
 
         
