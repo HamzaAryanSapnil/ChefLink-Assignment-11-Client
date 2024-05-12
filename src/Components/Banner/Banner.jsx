@@ -4,7 +4,7 @@ import BannerBtn from "../Banner Btn/BannerBtn";
 import { Link } from "react-router-dom";
 const Banner = () => {
   return (
-    <div className=" carousel w-full md:min-h-screen">
+    <div className=" carousel w-full min-h-screen ">
       <div
       style={{backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),url(${bgImg})`}}
       id="slide1" className="carousel-item relative w-full bg-cover bg-center bg-[#fbf9f0]">
@@ -17,10 +17,10 @@ const Banner = () => {
             <Link to={"/all_foods"} ><BannerBtn>See All Foods</BannerBtn></Link>
             </div>
             <div>
-                <img src={bannerImg} className="max-w-md rounded-xl" alt="" />
+                <img src={bannerImg} className="md:max-w-md rounded-xl" alt="" />
             </div>
         </div>
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+        <div className="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2">
           <a href="#slide4" className="btn btn-circle">
             ❮
           </a>
