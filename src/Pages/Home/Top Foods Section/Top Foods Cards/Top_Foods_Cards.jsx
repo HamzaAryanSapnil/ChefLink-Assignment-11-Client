@@ -1,4 +1,6 @@
-const Top_Foods_Cards = () => {
+import PropTypes from 'prop-types'
+const Top_Foods_Cards = ({topFood}) => {
+    const { _id, name, image, price, description } = topFood;
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
@@ -18,4 +20,7 @@ const Top_Foods_Cards = () => {
   );
 };
 
+Top_Foods_Cards.propTypes = {
+  topFood: PropTypes.object,
+}
 export default Top_Foods_Cards;
