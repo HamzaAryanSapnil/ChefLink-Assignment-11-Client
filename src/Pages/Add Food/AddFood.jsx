@@ -38,16 +38,18 @@ const AddFood = () => {
   };
 
   return (
-    <div
-     
-      className="hero min-h-screen   mx-auto bg-[#faf9f5]"
-    >
-        
-      <div className="hero-content flex-col xl:flex-row-reverse w-full">
-        <img src={foodImg} className="max-w-sm rounded-lg shadow-2xl" />
+    <div className="flex justify-center items-center flex-col gap-y-10 min-h-screen   mx-auto bg-[#faf9f5] p-4">
+        <div className=" z-10 " >
+            <h1 className="text-3xl md:text-5xl  font-bold text-center text-black " >Add Your Own Food</h1>
+        </div>
+      <div className="flex flex-col xl:flex-row-reverse w-full gap-4 justify-around items-center ">
+        <img src={foodImg} className="md:max-w-md rounded-lg shadow-2xl " />
 
         <div className="card shrink-0 w-full max-w-5xl  shadow-2xl bg-base-100">
-          <form className="card-body grid grid-cols-1 md:grid-cols-3 gap-6  md:mx-auto md:justify-center md:items-center" onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="card-body grid grid-cols-1 md:grid-cols-3 gap-6  md:mx-auto md:justify-center md:items-center"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Food Name</span>
