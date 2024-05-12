@@ -9,6 +9,27 @@ const AddFood = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    // send data to server
+    fetch("http://localhost:5000/allFoodItems", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.acknowledged) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your work has been saved",
+              showConfirmButton: false,
+              timer: 1500
+            });
+        }
+    })
   };
 
   return (
