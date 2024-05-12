@@ -1,5 +1,7 @@
 import bannerImg from "../../assets/hydrabadi biriyani.jpg"
 import bgImg from '../../assets/bg add food.jpg'
+import BannerBtn from "../Banner Btn/BannerBtn";
+import { Link } from "react-router-dom";
 const Banner = () => {
   return (
     <div className=" carousel w-full min-h-screen">
@@ -10,8 +12,9 @@ const Banner = () => {
          <div className=" bg-opacity-60"></div>
         <div className="absolute flex justify-around transform -translate-y-1/2 left-5 right-5 top-1/2">
         <div className="max-w-sm flex flex-col justify-center items-start gap-4 p-2 text-black">
-            <h1 className="text-3xl md:text-5xl font-bold" ><span className="bg-gradient-to-bl from-[#ffdbb5] to-[#873a06] bg-clip-text text-transparent" >ChefLink</span>. Your Very Own Recipe Network</h1>
+            <h1 className="text-3xl md:text-5xl font-bold" ><span className="bg-gradient-to-bl from-[#ffc586] to-bannerBtnBg bg-clip-text text-transparent" >ChefLink</span>. Your Very Own Recipe Network</h1>
             <p className="text-lg" >Delicious dishes, unforgettable moments.</p>
+            <Link to={"/all_foods"} ><BannerBtn>See All Foods</BannerBtn></Link>
             </div>
             <div>
                 <img src={bannerImg} className="max-w-md rounded-xl" alt="" />

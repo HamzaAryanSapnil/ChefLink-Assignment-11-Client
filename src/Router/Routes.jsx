@@ -9,6 +9,7 @@ import Signup from "../Pages/Sign Up/Signup";
 import MyOrderedFoods from "../Pages/My Ordered Foods/MyOrderedFoods";
 import MyAddedFoods from "../Pages/My Added Foods/MyAddedFoods";
 import AddFood from "../Pages/Add Food/AddFood";
+import AllFoods from "../Pages/All Foods/AllFoods";
 
   const router = createBrowserRouter([
     {
@@ -20,6 +21,12 @@ import AddFood from "../Pages/Add Food/AddFood";
           path: "/",
           element: <Home/>,
         },
+        
+        {
+          path: "/all_foods",
+          element: <AllFoods/>,
+        },
+
         {
           path: "/login",
           element: <Login/>,

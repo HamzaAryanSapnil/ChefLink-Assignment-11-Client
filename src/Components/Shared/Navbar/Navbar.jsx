@@ -24,11 +24,11 @@ const Navbar = () => {
       <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium">
         <NavLink to="/all_foods">All Foods</NavLink>
       </li>
+      <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium">
+        <NavLink to="/food_gallery">Food Gallery</NavLink>
+      </li>
       {user ? (
         <>
-          <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium">
-            <NavLink to="/food_gallery">Food Gallery</NavLink>
-          </li>
           <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium">
             <NavLink to="/my_profile">My Profile</NavLink>
           </li>
@@ -107,13 +107,13 @@ const Navbar = () => {
                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link to={"/my_added_foods"} >My added food items</Link>
+                  <Link to={"/my_added_foods"}>My added food items</Link>
                 </li>
                 <li>
-                  <Link to={"/add_food"} >Add a food item</Link>
+                  <Link to={"/add_food"}>Add a food item</Link>
                 </li>
                 <li>
-                  <Link to={"/my_ordered_foods"} >My ordered food items</Link>
+                  <Link to={"/my_ordered_foods"}>My ordered food items</Link>
                 </li>
               </ul>
             </div>
