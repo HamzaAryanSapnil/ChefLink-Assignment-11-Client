@@ -1,13 +1,16 @@
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Auth Provider/AuthProvider";
-import addFoodBg from "../../assets/bg add food.jpg";
-import foodImg from "../../assets/hydrabadi biriyani.jpg"
+import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import Swal from "sweetalert2";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -23,25 +26,28 @@ const AddFood = () => {
       .then((result) => {
         console.log(result);
         if (result.acknowledged) {
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Your work has been saved",
-              showConfirmButton: false,
-              timer: 1500
-            });
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-    })
+      });
   };
 
   return (
-    <div 
-    style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${addFoodBg})` }}
-    className="hero min-h-screen  container mx-auto bg-[#faf9f5]">
+    <div
+     
+      className="hero min-h-screen   mx-auto bg-[#faf9f5]"
+    >
+        
       <div className="hero-content flex-col xl:flex-row-reverse w-full">
-      
-        <div className="card shrink-0 w-full max-w-2xl  shadow-2xl bg-base-100">
-          <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+        <img src={foodImg} className="max-w-sm rounded-lg shadow-2xl" />
+
+        <div className="card shrink-0 w-full max-w-5xl  shadow-2xl bg-base-100">
+          <form className="card-body grid grid-cols-1 md:grid-cols-3 gap-6  md:mx-auto md:justify-center md:items-center" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Food Name</span>
@@ -57,7 +63,9 @@ const AddFood = () => {
                   },
                 })}
               />
-              {errors.foodName && <p className="text-red-500">{errors.foodName.message}</p>}
+              {errors.foodName && (
+                <p className="text-red-500">{errors.foodName.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -68,13 +76,15 @@ const AddFood = () => {
                 placeholder="Food Image Url"
                 className="input input-bordered"
                 {...register("foodImageUrl", {
-                    required: {
-                        value: true,
-                        message: "Food name is required",
-                      },
+                  required: {
+                    value: true,
+                    message: "Food name is required",
+                  },
                 })}
               />
-              {errors.foodImageUrl && <p className="text-red-500">{errors.foodImageUrl.message}</p>}
+              {errors.foodImageUrl && (
+                <p className="text-red-500">{errors.foodImageUrl.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -85,13 +95,15 @@ const AddFood = () => {
                 placeholder="Food Category"
                 className="input input-bordered"
                 {...register("foodCategory", {
-                    required: {
-                        value: true,
-                        message: "Food name is required",
-                      },
+                  required: {
+                    value: true,
+                    message: "Food name is required",
+                  },
                 })}
               />
-              {errors.foodCategory && <p className="text-red-500">{errors.foodCategory.message}</p>}
+              {errors.foodCategory && (
+                <p className="text-red-500">{errors.foodCategory.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -102,13 +114,15 @@ const AddFood = () => {
                 placeholder="Quantity"
                 className="input input-bordered"
                 {...register("quantity", {
-                    required: {
-                        value: true,
-                        message: "Food name is required",
-                      },
+                  required: {
+                    value: true,
+                    message: "Food name is required",
+                  },
                 })}
               />
-              {errors.quantity && <p className="text-red-500">{errors.quantity.message}</p>}
+              {errors.quantity && (
+                <p className="text-red-500">{errors.quantity.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -119,13 +133,15 @@ const AddFood = () => {
                 placeholder="Price"
                 className="input input-bordered"
                 {...register("price", {
-                    required: {
-                        value: true,
-                        message: "Food name is required",
-                      },
+                  required: {
+                    value: true,
+                    message: "Food name is required",
+                  },
                 })}
               />
-              {errors.price && <p className="text-red-500">{errors.price.message}</p>}
+              {errors.price && (
+                <p className="text-red-500">{errors.price.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -133,7 +149,9 @@ const AddFood = () => {
               </label>
               <input
                 type="text"
-                placeholder={user?.displayName ? user?.displayName : "User Name"}
+                placeholder={
+                  user?.displayName ? user?.displayName : "User Name"
+                }
                 className="input input-bordered"
                 value={user?.displayName ? user?.displayName : "User Name"}
                 disabled
@@ -160,13 +178,15 @@ const AddFood = () => {
                 placeholder="Food Origin"
                 className="input input-bordered"
                 {...register("foodOrigin", {
-                    required: {
-                        value: true,
-                        message: "Food name is required",
-                      },
+                  required: {
+                    value: true,
+                    message: "Food name is required",
+                  },
                 })}
               />
-              {errors.foodOrigin && <p className="text-red-500">{errors.foodOrigin.message}</p>}
+              {errors.foodOrigin && (
+                <p className="text-red-500">{errors.foodOrigin.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -176,13 +196,15 @@ const AddFood = () => {
                 placeholder="A short description"
                 className="textarea h-32 input-bordered"
                 {...register("description", {
-                    required: {
-                        value: true,
-                        message: "Food name is required",
-                      },
+                  required: {
+                    value: true,
+                    message: "Food name is required",
+                  },
                 })}
               />
-              {errors.description && <p className="text-red-500">{errors.description.message}</p>}
+              {errors.description && (
+                <p className="text-red-500">{errors.description.message}</p>
+              )}
             </div>
             <div className="form-control">
               <button className="btn btn-primary">ADD ITEM</button>
@@ -195,4 +217,3 @@ const AddFood = () => {
 };
 
 export default AddFood;
-
