@@ -45,7 +45,13 @@ const AddFood = () => {
         <div className="card shrink-0 w-full max-w-5xl  shadow-2xl bg-base-100">
           <form
             className="card-body grid grid-cols-1 md:grid-cols-3 gap-6  md:mx-auto md:justify-center md:items-center"
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit((data) => {
+              onSubmit({
+                ...data,
+                userName: user?.displayName ? user?.displayName : "",
+                email: user?.email ? user?.email : "",
+              });
+            })}
           >
             <div className="form-control">
               <label className="label">
@@ -146,10 +152,18 @@ const AddFood = () => {
                 placeholder={
                   user?.displayName ? user?.displayName : "User Name"
                 }
-                className="input input-bordered"
                 value={user?.displayName ? user?.displayName : "User Name"}
-                disabled
+                className="input input-bordered"
+                {...register("userName", {
+                  required: {
+                    value: true,
+                    message: "User Name is required",
+                  },
+                })}
               />
+              {errors.userName && (
+                <p className="text-red-500">User Name is required</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -158,10 +172,18 @@ const AddFood = () => {
               <input
                 type="email"
                 placeholder={user?.email ? user?.email : "example@example.com"}
-                className="input input-bordered"
                 value={user?.email ? user?.email : "example@example.com"}
-                disabled
+                className="input input-bordered"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Email is required",
+                  },
+                })}
               />
+              {errors.email && (
+                <p className="text-red-500">Email is required</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
