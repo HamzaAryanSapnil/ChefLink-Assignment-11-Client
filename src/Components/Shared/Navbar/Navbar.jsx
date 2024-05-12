@@ -18,7 +18,7 @@ const Navbar = () => {
   };
   const navLinks = (
     <>
-      <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium" >
+      <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium">
         <NavLink to="/">Home</NavLink>
       </li>
       <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium">
@@ -26,16 +26,16 @@ const Navbar = () => {
       </li>
       {user ? (
         <>
-          <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium" >
+          <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium">
             <NavLink to="/food_gallery">Food Gallery</NavLink>
           </li>
-          <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium" >
+          <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium">
             <NavLink to="/my_profile">My Profile</NavLink>
           </li>
         </>
       ) : (
         <>
-          <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium" >
+          <li className=" hover:transition-all hover:duration-300 hover:bg-signBtn hover:text-white hover:rounded-lg hover:shadow-lg hover:shadow-signBtn hover:font-manrope hover:font-medium">
             <NavLink to="/signup">Sign Up</NavLink>
           </li>
         </>
@@ -72,9 +72,9 @@ const Navbar = () => {
           </div>
           <Link
             to={"/"}
-            className="btn btn-ghost text-xl font-titillium font-bold text-descolor"
+            className="btn btn-ghost text-xl font-titillium font-bold text-descolor inline-flex gap-0  "
           >
-            <span className="text-signBtn">Elite</span>Realty
+            <span className="text-signBtn">Chef</span>Link
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -82,6 +82,10 @@ const Navbar = () => {
         </div>
         {user ? (
           <div className="navbar-end">
+            {/* here in this img if i click i will see a dropdown comes down in the dropdown there will be there will be three routes:
+ 1. Myaddedfooditems
+ 2. Addafooditem
+ 3. Myorderedfooditems */}
             <div
               tabIndex={0}
               role="button"
@@ -108,10 +112,7 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="navbar-end">
-            <Link
-              to="/login"
-              className="btn btn-neutral font-bold"
-            >
+            <Link to="/login" className="btn btn-neutral font-bold">
               Login
             </Link>
           </div>
