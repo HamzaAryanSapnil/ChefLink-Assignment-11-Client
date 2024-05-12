@@ -6,11 +6,7 @@ import Swal from "sweetalert2";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: {errors}, reset } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -34,6 +30,7 @@ const AddFood = () => {
             timer: 1500,
           });
         }
+        reset();
       });
   };
 
