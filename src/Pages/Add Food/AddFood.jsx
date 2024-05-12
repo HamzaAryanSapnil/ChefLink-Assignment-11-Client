@@ -28,7 +28,10 @@ const AddFood = () => {
                 placeholder="Food Name"
                 className="input input-bordered"
                 {...register("foodName", {
-                  required: true,
+                  required: {
+                    value: true,
+                    message: "Food name is required",
+                  },
                 })}
               />
               {errors.foodName && <p className="text-red-500">{errors.foodName.message}</p>}
@@ -42,7 +45,10 @@ const AddFood = () => {
                 placeholder="Food Image Url"
                 className="input input-bordered"
                 {...register("foodImageUrl", {
-                  required: true,
+                    required: {
+                        value: true,
+                        message: "Food name is required",
+                      },
                 })}
               />
               {errors.foodImageUrl && <p className="text-red-500">{errors.foodImageUrl.message}</p>}
@@ -56,7 +62,10 @@ const AddFood = () => {
                 placeholder="Food Category"
                 className="input input-bordered"
                 {...register("foodCategory", {
-                  required: true,
+                    required: {
+                        value: true,
+                        message: "Food name is required",
+                      },
                 })}
               />
               {errors.foodCategory && <p className="text-red-500">{errors.foodCategory.message}</p>}
@@ -70,7 +79,10 @@ const AddFood = () => {
                 placeholder="Quantity"
                 className="input input-bordered"
                 {...register("quantity", {
-                  required: true,
+                    required: {
+                        value: true,
+                        message: "Food name is required",
+                      },
                 })}
               />
               {errors.quantity && <p className="text-red-500">{errors.quantity.message}</p>}
@@ -84,7 +96,10 @@ const AddFood = () => {
                 placeholder="Price"
                 className="input input-bordered"
                 {...register("price", {
-                  required: true,
+                    required: {
+                        value: true,
+                        message: "Food name is required",
+                      },
                 })}
               />
               {errors.price && <p className="text-red-500">{errors.price.message}</p>}
@@ -122,7 +137,10 @@ const AddFood = () => {
                 placeholder="Food Origin"
                 className="input input-bordered"
                 {...register("foodOrigin", {
-                  required: true,
+                    required: {
+                        value: true,
+                        message: "Food name is required",
+                      },
                 })}
               />
               {errors.foodOrigin && <p className="text-red-500">{errors.foodOrigin.message}</p>}
@@ -135,7 +153,10 @@ const AddFood = () => {
                 placeholder="A short description"
                 className="textarea h-32 input-bordered"
                 {...register("description", {
-                  required: true,
+                    required: {
+                        value: true,
+                        message: "Food name is required",
+                      },
                 })}
               />
               {errors.description && <p className="text-red-500">{errors.description.message}</p>}
