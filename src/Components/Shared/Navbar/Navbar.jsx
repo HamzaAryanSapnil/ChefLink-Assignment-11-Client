@@ -89,10 +89,10 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar tooltip"
+              className="btn btn-ghost btn-circle avatar tooltip dropdown dropdown-end"
               data-tip={user?.displayName ? user?.displayName : "User"}
             >
-              <div className="w-10 rounded-full">
+              <div className="w-10 rounded-full " tabIndex={0} role="button">
                 <img
                   alt="Tailwind CSS Navbar component"
                   src={
@@ -102,6 +102,17 @@ const Navbar = () => {
                   }
                 />
               </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <a>Item 1</a>
+                </li>
+                <li>
+                  <a>Item 2</a>
+                </li>
+              </ul>
             </div>
             <button
               onClick={handleLogout}
