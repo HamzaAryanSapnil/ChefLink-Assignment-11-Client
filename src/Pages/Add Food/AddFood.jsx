@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Auth Provider/AuthProvider";
 import addFoodBg from "../../assets/bg add food.jpg";
-import foodImg from "../../assets/test food img.jpg";
 import Swal from "sweetalert2";
 
 const AddFood = () => {
@@ -39,10 +38,8 @@ const AddFood = () => {
     style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${addFoodBg})` }}
     className="hero min-h-screen  container mx-auto bg-[#faf9f5]">
       <div className="hero-content flex-col xl:flex-row-reverse w-full">
-       <div className="w-full h-full" >
-        <img src={foodImg} alt="" className="max-w-sm rounded-lg shadow-2xl bg-transparent"/>
-       </div>
-        <div className="card shrink-0 w-full  shadow-2xl bg-base-100">
+      
+        <div className="card shrink-0 w-full max-w-2xl  shadow-2xl bg-base-100">
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <label className="label">
