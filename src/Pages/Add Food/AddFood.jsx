@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Auth Provider/AuthProvider";
 import addFoodBg from "../../assets/bg add food.jpg";
+import foodImg from "../../assets/hydrabadi biriyani.jpg"
 import Swal from "sweetalert2";
 
 const AddFood = () => {
