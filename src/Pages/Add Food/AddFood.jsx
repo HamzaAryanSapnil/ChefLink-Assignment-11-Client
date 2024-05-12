@@ -63,7 +63,7 @@ const AddFood = () => {
                 })}
               />
               {errors.foodName && (
-                <p className="text-red-500">{errors.foodName.message}</p>
+                <p className="text-red-500">Food name is required</p>
               )}
             </div>
             <div className="form-control">
@@ -77,32 +77,27 @@ const AddFood = () => {
                 {...register("foodImageUrl", {
                   required: {
                     value: true,
-                    message: "Food name is required",
+                    message: "Food image url is required",
                   },
                 })}
               />
               {errors.foodImageUrl && (
-                <p className="text-red-500">{errors.foodImageUrl.message}</p>
+                <p className="text-red-500">Food image url is required</p>
               )}
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Food Category</span>
               </label>
-              <input
-                type="text"
-                placeholder="Food Category"
-                className="input input-bordered"
-                {...register("foodCategory", {
-                  required: {
-                    value: true,
-                    message: "Food name is required",
-                  },
-                })}
-              />
-              {errors.foodCategory && (
-                <p className="text-red-500">{errors.foodCategory.message}</p>
-              )}
+              <select className="select select-bordered w-full" {...register("foodCategory", { required: true })}>
+                <option value="">Select Food Category</option>
+                <option value="Fish">Fish</option>
+                <option value="Biriyani">Biriyani</option>
+                <option value="Lentil">Lentil</option>
+                <option value="Veg">Veg</option>
+                <option value="Salad">Salad</option>
+              </select>
+              {errors.foodCategory && <p className="text-red-500">Food category is required</p>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -115,12 +110,12 @@ const AddFood = () => {
                 {...register("quantity", {
                   required: {
                     value: true,
-                    message: "Food name is required",
+                    message: "Quantity is required",
                   },
                 })}
               />
               {errors.quantity && (
-                <p className="text-red-500">{errors.quantity.message}</p>
+                <p className="text-red-500">Quantity is required</p>
               )}
             </div>
             <div className="form-control">
@@ -134,12 +129,12 @@ const AddFood = () => {
                 {...register("price", {
                   required: {
                     value: true,
-                    message: "Food name is required",
+                    message: "Price is required",
                   },
                 })}
               />
               {errors.price && (
-                <p className="text-red-500">{errors.price.message}</p>
+                <p className="text-red-500">Price is required</p>
               )}
             </div>
             <div className="form-control">
@@ -179,12 +174,12 @@ const AddFood = () => {
                 {...register("foodOrigin", {
                   required: {
                     value: true,
-                    message: "Food name is required",
+                    message: "Food origin is required",
                   },
                 })}
               />
               {errors.foodOrigin && (
-                <p className="text-red-500">{errors.foodOrigin.message}</p>
+                <p className="text-red-500">Food origin is required</p>
               )}
             </div>
             <div className="form-control">
@@ -197,12 +192,12 @@ const AddFood = () => {
                 {...register("description", {
                   required: {
                     value: true,
-                    message: "Food name is required",
+                    message: "Description is required",
                   },
                 })}
               />
               {errors.description && (
-                <p className="text-red-500">{errors.description.message}</p>
+                <p className="text-red-500">Description is required</p>
               )}
             </div>
             <div className="form-control">
