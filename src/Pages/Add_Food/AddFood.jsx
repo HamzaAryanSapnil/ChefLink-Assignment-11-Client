@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Auth Provider/AuthProvider";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import Swal from "sweetalert2";
+import BannerBtn from "../../Components/Banner Btn/BannerBtn";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
@@ -223,7 +224,7 @@ const AddFood = () => {
               )}
             </div>
             <div className="form-control">
-              <button className="btn btn-primary">ADD ITEM</button>
+             <BannerBtn>ADD ITEM</BannerBtn>
             </div>
           </form>
         </div>
