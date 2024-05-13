@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { AuthContext } from "../../Auth Provider/AuthProvider";
+import { AuthContext } from "../../Auth_Provider/AuthProvider";
 
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
@@ -9,11 +9,12 @@ const PrivateRoute = ({ children }) => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen font-manrope text-2xl font-extrabold " >
-
+      <div className="flex justify-center items-center min-h-screen font-manrope text-2xl font-extrabold ">
         <span className="loading loading-spinner loading-lg "></span>
-        <p><span className="text-signBtn" >Still Loading...!</span> <br /> reload the page</p>
-        
+        <p>
+          <span className="text-signBtn">Still Loading...!</span> <br /> reload
+          the page
+        </p>
       </div>
     );
   }
@@ -21,7 +22,7 @@ const PrivateRoute = ({ children }) => {
     return children;
   }
 
-  return <Navigate to="/login" state={location.pathname} replace/>;
+  return <Navigate to="/login" state={location.pathname} replace />;
 };
 
 PrivateRoute.propTypes = {

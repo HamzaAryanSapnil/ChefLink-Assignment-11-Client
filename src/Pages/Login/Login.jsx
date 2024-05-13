@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Auth Provider/AuthProvider";
+import { AuthContext } from "../../Auth_Provider/AuthProvider";
 import googleIcon from "../../assets/3d-fluency-google-logo.png";
 import githubIcon from "../../assets/github.png";
 const Login = () => {
-  const {logIn, googleLogin, githubLogin} = useContext(AuthContext);
+  const { logIn, googleLogin, githubLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const {
@@ -19,17 +19,16 @@ const Login = () => {
     const email = data.email;
     const password = data.password;
     logIn(email, password)
-    .then((result) => {
-      const user = result.user;
-      console.log(user);
-      navigate(location?.state ? location.state : "/");
-
-    })
-    .catch((error) => {
-      console.error(error);
-    })
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
-  
+
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
@@ -52,7 +51,7 @@ const Login = () => {
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
         <div className="w-1/2 mr-12 ">
-          <img  alt="" />
+          <img alt="" />
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -111,9 +110,7 @@ const Login = () => {
                       !/[0-9]/.test(value) ||
                       !/[!@#$%^&*]/.test(value)
                     ) {
-                      return (
-                        "Password must have an uppercase, a lowercase, a number and a special character"
-                      );
+                      return "Password must have an uppercase, a lowercase, a number and a special character";
                     }
                   },
                 })}
@@ -137,18 +134,33 @@ const Login = () => {
             </div>
           </form>
           <div className="text-center">
-              <p className="text-center ">Or Login with</p>
-              <div className="flex justify-center items-center mt-2 gap-x-2">
-                <button onClick={handleGoogleLogin} className="btn btn-circle bg-transparent border-none">
-                  <i><img src={googleIcon} className="w-10 h-10" alt=""  /></i>
-                </button>
+            <p className="text-center ">Or Login with</p>
+            <div className="flex justify-center items-center mt-2 gap-x-2">
+              <button
+                onClick={handleGoogleLogin}
+                className="btn btn-circle bg-transparent border-none"
+              >
+                <i>
+                  <img src={googleIcon} className="w-10 h-10" alt="" />
+                </i>
+              </button>
 
-                <button onClick={handleGithubLogin} className="btn btn-circle bg-transparent border-none">
-                  <i><img src={githubIcon}  alt="" /></i>
-                </button>
-              </div>
+              <button
+                onClick={handleGithubLogin}
+                className="btn btn-circle bg-transparent border-none"
+              >
+                <i>
+                  <img src={githubIcon} alt="" />
+                </i>
+              </button>
             </div>
-          <p className=" my-4 text-center">New to car doctor ? <Link to="/signup" className="text-appointBtnColor font-medium">Sign Up</Link> </p>
+          </div>
+          <p className=" my-4 text-center">
+            New to car doctor ?{" "}
+            <Link to="/signup" className="text-appointBtnColor font-medium">
+              Sign Up
+            </Link>{" "}
+          </p>
         </div>
       </div>
     </div>

@@ -1,13 +1,18 @@
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import { AuthContext } from "../../Auth Provider/AuthProvider";
+import { AuthContext } from "../../Auth_Provider/AuthProvider";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import Swal from "sweetalert2";
-import BannerBtn from "../../Components/Banner Btn/BannerBtn";
+import BannerBtn from "../../Components/Banner_Btn/BannerBtn";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
-  const { register, handleSubmit, formState: {errors}, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -37,9 +42,11 @@ const AddFood = () => {
 
   return (
     <div className="flex justify-center items-center flex-col gap-y-10 min-h-screen   mx-auto bg-[#faf9f5] p-4">
-        <div className=" z-10 " >
-            <h1 className="text-3xl md:text-5xl  font-bold text-center text-black " >Add Your Own Food</h1>
-        </div>
+      <div className=" z-10 ">
+        <h1 className="text-3xl md:text-5xl  font-bold text-center text-black ">
+          Add Your Own Food
+        </h1>
+      </div>
       <div className="flex flex-col xl:flex-row-reverse w-full gap-4 justify-around items-center ">
         <img src={foodImg} className="md:max-w-md rounded-lg shadow-2xl " />
 
@@ -96,7 +103,10 @@ const AddFood = () => {
               <label className="label">
                 <span className="label-text">Food Category</span>
               </label>
-              <select className="select select-bordered w-full" {...register("foodCategory", { required: true })}>
+              <select
+                className="select select-bordered w-full"
+                {...register("foodCategory", { required: true })}
+              >
                 <option value="">Select Food Category</option>
                 <option value="Fish">Fish</option>
                 <option value="Biriyani">Biriyani</option>
@@ -104,7 +114,9 @@ const AddFood = () => {
                 <option value="Veg">Veg</option>
                 <option value="Salad">Salad</option>
               </select>
-              {errors.foodCategory && <p className="text-red-500">Food category is required</p>}
+              {errors.foodCategory && (
+                <p className="text-red-500">Food category is required</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -224,7 +236,7 @@ const AddFood = () => {
               )}
             </div>
             <div className="form-control">
-             <BannerBtn>ADD ITEM</BannerBtn>
+              <BannerBtn>ADD ITEM</BannerBtn>
             </div>
           </form>
         </div>

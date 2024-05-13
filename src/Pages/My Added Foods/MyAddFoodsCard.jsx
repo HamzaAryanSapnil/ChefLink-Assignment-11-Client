@@ -1,13 +1,11 @@
-
-
-import BannerBtnRoundedFull from "../../Components/Banner Btn/BannerBtnRoundedFull";
+import BannerBtnRoundedFull from "../../Components/Banner_Btn/BannerBtnRoundedFull";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-const MyAddFoodsCard = ({item, handleDelete, }) => {
-    const {_id, foodName, foodImageUrl, foodCategory, price,  } = item;
-    // delete functionallity
-    
+const MyAddFoodsCard = ({ item, handleDelete }) => {
+  const { _id, foodName, foodImageUrl, foodCategory, price } = item;
+  // delete functionallity
+
   return (
     <div className="card w-full flex-col md:flex-row bg-base-100 shadow-xl ">
       <figure>
@@ -22,10 +20,13 @@ const MyAddFoodsCard = ({item, handleDelete, }) => {
         <p> Food Category: {foodCategory}</p>
         <p> Price: {price}</p>
         <div className="card-actions justify-end">
-          <Link to={`/food_update/${_id}`} >
-          <BannerBtnRoundedFull>Update</BannerBtnRoundedFull>
+          <Link to={`/food_update/${_id}`}>
+            <BannerBtnRoundedFull>Update</BannerBtnRoundedFull>
           </Link>
-          <BannerBtnRoundedFull> <span onClick={() => handleDelete(_id)} >Delete</span></BannerBtnRoundedFull>
+          <BannerBtnRoundedFull>
+            {" "}
+            <span onClick={() => handleDelete(_id)}>Delete</span>
+          </BannerBtnRoundedFull>
         </div>
       </div>
     </div>
@@ -35,5 +36,5 @@ const MyAddFoodsCard = ({item, handleDelete, }) => {
 MyAddFoodsCard.propTypes = {
   item: PropTypes.object,
   handleDelete: PropTypes.func,
-}
+};
 export default MyAddFoodsCard;

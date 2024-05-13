@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import PropTypes from "prop-types";
-import BannerBtnRoundedFull from "../../Components/Banner Btn/BannerBtnRoundedFull";
+import BannerBtnRoundedFull from "../../Components/Banner_Btn/BannerBtnRoundedFull";
 
 const Food_Details = () => {
   const data = useLoaderData();
@@ -32,29 +32,29 @@ const Food_Details = () => {
           }
           className=" xl:w-1/2 rounded-lg shadow-2xl xl:max-w-screen-lg"
         />
-        <div className="xl:w-1/2 flex flex-col gap-10" >
-        <div className="flex flex-col  gap-4" >
+        <div className="xl:w-1/2 flex flex-col gap-10">
+          <div className="flex flex-col  gap-4">
             <h3 className="text-5xl font-bold">{foodName}</h3>
-            <p className="text-xl" >{description}</p>
+            <p className="text-xl">{description}</p>
           </div>
-          <div className="flex justify-start items-end gap-4" >
+          <div className="flex justify-start items-end gap-4">
             <h3 className="text-3xl font-bold">Category:</h3>
-            <p className="text-xl" >{foodCategory}</p>
+            <p className="text-xl">{foodCategory}</p>
           </div>
-          <div className="flex justify-start items-end gap-4" >
+          <div className="flex justify-start items-end gap-4">
             <h3 className="text-3xl font-bold">Price:</h3>
-            <p className="text-xl" >{price}</p>
+            <p className="text-xl">{price}</p>
           </div>
-          <div className="flex justify-start items-end gap-4" >
+          <div className="flex justify-start items-end gap-4">
             <h3 className="text-2xl font-bold">Made By:</h3>
-            <p className="text-xl" >{userName}</p>
+            <p className="text-xl">{userName}</p>
           </div>
-          <div className="flex justify-start items-end gap-4" >
+          <div className="flex justify-start items-end gap-4">
             <h3 className="text-2xl font-bold">Food Origin:</h3>
-            <p className="text-xl" >{foodOrigin}</p>
+            <p className="text-xl">{foodOrigin}</p>
           </div>
-          <Link to={"/purchase"} >
-          <BannerBtnRoundedFull>Purchase</BannerBtnRoundedFull>
+          <Link to={"/purchase"}>
+            <BannerBtnRoundedFull>Purchase</BannerBtnRoundedFull>
           </Link>
         </div>
       </div>

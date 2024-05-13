@@ -1,15 +1,19 @@
-import PropTypes from 'prop-types'
-import BannerBtnRoundedFull from '../../../../Components/Banner Btn/BannerBtnRoundedFull';
-import { Link } from 'react-router-dom';
-const Top_Foods_Cards = ({topFood}) => {
-    const { _id, foodName, foodImageUrl, foodCategory, price } = topFood;
+import PropTypes from "prop-types";
+import BannerBtnRoundedFull from "../../../../Components/Banner_Btn/BannerBtnRoundedFull";
+import { Link } from "react-router-dom";
+const Top_Foods_Cards = ({ topFood }) => {
+  const { _id, foodName, foodImageUrl, foodCategory, price } = topFood;
   return (
     <div className="card  bg-base-100 shadow-xl">
       <figure>
         <img
-          src={foodImageUrl? foodImageUrl : "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"}
+          src={
+            foodImageUrl
+              ? foodImageUrl
+              : "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+          }
           alt="Shoes"
-          className='h-64 w-full'
+          className="h-64 w-full"
         />
       </figure>
       <div className="card-body">
@@ -17,8 +21,8 @@ const Top_Foods_Cards = ({topFood}) => {
         <p>Category: {foodCategory}</p>
         <p>Price: {price}</p>
         <div className="card-actions ">
-          <Link to={`/food_details/${_id}`} >
-          <BannerBtnRoundedFull>View Full Food Details</BannerBtnRoundedFull>
+          <Link to={`/food_details/${_id}`}>
+            <BannerBtnRoundedFull>View Full Food Details</BannerBtnRoundedFull>
           </Link>
         </div>
       </div>
@@ -28,5 +32,5 @@ const Top_Foods_Cards = ({topFood}) => {
 
 Top_Foods_Cards.propTypes = {
   topFood: PropTypes.object,
-}
+};
 export default Top_Foods_Cards;

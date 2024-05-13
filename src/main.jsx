@@ -1,11 +1,10 @@
-
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
-import {  RouterProvider, } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import router from "./Router/Routes.jsx";
-import AuthProvider from "./Auth Provider/AuthProvider.jsx";
+import AuthProvider from "./Auth_Provider/AuthProvider.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
     <RouterProvider router={router} />

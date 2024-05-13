@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Auth Provider/AuthProvider";
+import { AuthContext } from "../../Auth_Provider/AuthProvider";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import MyAddFoodsCard from "./MyAddFoodsCard";
 import Swal from "sweetalert2";
@@ -78,7 +78,6 @@ const MyAddedFoods = () => {
       });
   };
 
- 
   return (
     <div className="p-2">
       {isLoading ? (

@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Auth Provider/AuthProvider";
+import { AuthContext } from "../../Auth_Provider/AuthProvider";
 const Signup = () => {
-  const {createUser, updateUserProfile} = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -23,26 +23,24 @@ const Signup = () => {
         const user = result.user;
         console.log(user);
         updateUserProfile(name, photoUrl)
-        .then(() => {
-          console.log("profile updated");
-          navigate("/");
-        })
-        .catch((error) => {
-          console.error(error);
-        })
+          .then(() => {
+            console.log("profile updated");
+            navigate("/");
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       })
       .catch((error) => {
         console.error(error);
-      })
-
+      });
   };
-
 
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
         <div className="w-1/2 mr-12 ">
-          <img  alt="" />
+          <img alt="" />
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">

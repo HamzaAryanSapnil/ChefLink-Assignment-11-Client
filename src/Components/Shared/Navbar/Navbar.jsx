@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../Auth Provider/AuthProvider";
+import { AuthContext } from "../../../Auth_Provider/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -86,51 +86,41 @@ const Navbar = () => {
  1. Myaddedfooditems
  2. Addafooditem
  3. Myorderedfooditems */}
- <div className="inline-block relative dropdown dropdown-hover  dropdown-left " >
-  
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar tooltip "
-              data-tip={user?.displayName ? user?.displayName : "User"}
-            >
-              <div className="w-10 rounded-full "  tabIndex={0} role="button">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src={
-                    user?.photoURL
-                      ? user?.photoURL
-                      : "https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-                  }
-                />
-              </div>
+            <div className="inline-block relative dropdown dropdown-hover  dropdown-left ">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar tooltip "
+                data-tip={user?.displayName ? user?.displayName : "User"}
+              >
+                <div className="w-10 rounded-full " tabIndex={0} role="button">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={
+                      user?.photoURL
+                        ? user?.photoURL
+                        : "https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
+                    }
+                  />
+                </div>
               </div>
               <ul
                 tabIndex={0}
                 className="dropdown-content z-40 menu p-2 mt-3 shadow bg-base-100 rounded-box md:w-52 w-40"
               >
-                <Link to={"/my_added_foods"} className="my-2"  >
+                <Link to={"/my_added_foods"} className="my-2">
                   <button className="btn">
-
-                <li>
-                My added food items
-                </li>
-                  </button  >
-                </Link>
-                <Link to={"/add_food"} className="my-2"  >
-                  <button  className="btn" >
-
-                <li>
-                Add Food
-                </li>
+                    <li>My added food items</li>
                   </button>
                 </Link>
-                <Link to={"/my_ordered_foods"} className="my-2"  >
-                  <button  className="btn" >
-
-                <li>
-                My ordered food items
-                </li>
+                <Link to={"/add_food"} className="my-2">
+                  <button className="btn">
+                    <li>Add Food</li>
+                  </button>
+                </Link>
+                <Link to={"/my_ordered_foods"} className="my-2">
+                  <button className="btn">
+                    <li>My ordered food items</li>
                   </button>
                 </Link>
               </ul>
