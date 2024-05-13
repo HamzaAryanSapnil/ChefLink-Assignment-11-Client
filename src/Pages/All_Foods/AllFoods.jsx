@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+
 import AllFoodsCard from "./AllFoodsCard";
 import { useEffect, useState } from "react";
 
