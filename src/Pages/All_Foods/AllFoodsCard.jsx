@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
+import { Link } from "react-router-dom";
+import BannerBtnRoundedFull from "../../Components/Banner_Btn/BannerBtnRoundedFull";
 
 const AllFoodsCard = ({ food }) => {
-  const { foodName, foodImageUrl, foodCategory, price, _id } = food;
+  const { foodName, foodImageUrl, foodCategory, price, _id, quantity } = food;
   return (
     <div className="card  lg:w-96  bg-base-100 shadow-xl">
       <figure>
@@ -15,8 +17,9 @@ const AllFoodsCard = ({ food }) => {
         <h2 className="card-title">{foodName}</h2>
         <p>Category: {foodCategory}</p>
         <p>Price: {price}tk</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+        <p>Quantity: {quantity}</p>
+        <div className="card-actions ">
+          <Link to={`/food_details/${_id}`} ><BannerBtnRoundedFull>View Food Details</BannerBtnRoundedFull></Link>
         </div>
       </div>
     </div>

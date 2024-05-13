@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 const BannerBtnRoundedFull = ({children}) => {
   return (
-    <button className="btn bg-bannerBtnBg text-white border-none rounded-full min-w-20 text-lg font-bold">
+    <button className="btn bg-bannerBtnBg text-white border-none rounded-full  text-lg font-bold">
       {children}
     </button>
   );
