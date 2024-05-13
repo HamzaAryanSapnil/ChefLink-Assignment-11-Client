@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Auth Provider/AuthProvider";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import BannerBtnRoundedFull from "../../Components/Banner Btn/BannerBtnRoundedFull";
+import BannerBtn from "../../Components/Banner Btn/BannerBtn";
 
 const MyAddedFoods = () => {
   const { user } = useContext(AuthContext);
@@ -19,7 +20,6 @@ const MyAddedFoods = () => {
       fetch(url)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setData(data);
           setIsLoading(false);
         });
@@ -27,14 +27,13 @@ const MyAddedFoods = () => {
   }, [url]);
 
   return (
-    <div className="">
+    <div className="p-2">
       {isLoading ? (
         <div className="flex justify-center items-center min-h-screen">
           <span className="loading loading-spinner loading-lg"></span>
         </div>
       ) : (
         <div>
-          <h1>My Added Foods: {data.length}</h1>
           <div className="flex justify-center items-center flex-col gap-y-10 min-h-screen   mx-auto bg-[#faf9f5] p-4">
             <div className=" z-10 ">
               <h1 className="text-3xl md:text-5xl  font-bold text-center text-black ">
@@ -44,59 +43,82 @@ const MyAddedFoods = () => {
             <div className="flex flex-col xl:flex-row w-full gap-4 justify-around items-center ">
               <img
                 src={foodImg}
-                className="md:max-w-5xl rounded-lg shadow-2xl "
+                className="md:max-w-full rounded-lg shadow-2xl "
               />
 
-              <div className="overflow-x-auto w-1/2">
+              <div className="overflow-x-auto xl:w-1/2 ">
                 <table className="table  ">
                   {/* head */}
                   <thead>
-                    <tr>
+                    <tr className="text-center">
                       <th
                         rowSpan={1}
                         colSpan={1}
                         className="rounded-xl bg-bannerBtnBg rounded-r-none rounded-b-none text-white text-center"
                       >
-                        Food Name
+                        <h1 className=" text-xs md:text-2xl xl:text-3xl font-bold">
+                          Food Name
+                        </h1>
                       </th>
                       <th className="rounded-xl bg-bannerBtnBg rounded-l-none rounded-b-none rounded-r-none text-white text-center">
-                        Quantity
+                        <h1 className=" text-xs md:text-2xl xl:text-3xl font-bold">
+                          Qtn
+                        </h1>
                       </th>
                       <th className="rounded-xl bg-bannerBtnBg rounded-l-none rounded-b-none rounded-r-none text-white text-center">
-                        Price
+                        <h1 className=" text-xs md:text-2xl xl:text-3xl font-bold">
+                          Price
+                        </h1>
                       </th>
                       <th className="rounded-xl bg-bannerBtnBg rounded-l-none rounded-b-none  text-white text-center">
-                        Update
+                        <h1 className=" text-xs md:text-2xl xl:text-3xl font-bold">
+                          Update
+                        </h1>
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     {data?.map((data) => (
-                      <tr key={data?._id}>
+                      <tr key={data?._id} className="text-center">
                         <td>
                           <div className="flex items-center gap-3">
-                            <div className="avatar">
-                              <div className="mask mask-squircle w-12 h-12">
+                            <div className="avatar hidden ">
+                              <div className="mask mask-squircle xl:w-96 xl:h-64">
                                 <img
-                                  src={data?.foodImageUrl ? data?.foodImageUrl : foodImg}
+                                  src={
+                                    data?.foodImageUrl
+                                      ? data?.foodImageUrl
+                                      : foodImg
+                                  }
                                   alt="Avatar Tailwind CSS Component"
                                 />
                               </div>
                             </div>
                             <div>
-                              <div className="font-bold"> {data?.foodName}</div>
-                              <div className="text-sm opacity-50">
-                              
+                              <div className="font-bold text-xs  md:text-3xl xl:text-4xl">
+                                {data?.foodName}
+                              </div>
+                              <div className="md:text-3xl text-xs mt-3 opacity-50">
+                                {data?.foodCategory}
                               </div>
                             </div>
                           </div>
                         </td>
                         <td>
-                         {data?.quantity}
+                          <h1 className="  md:text-3xl xl:text-5xl font-bold">
+                            {data?.quantity}
+                          </h1>
                         </td>
-                        <td>{data?.price}tk</td>
+                        <td>
+                          <h1 className="  md:text-3xl xl:text-5xl font-bold">
+                            {data?.price}tk
+                          </h1>
+                        </td>
                         <th>
-                          <BannerBtnRoundedFull>Update</BannerBtnRoundedFull>
+                          <BannerBtn>
+                            <p className="hidden md:block" >Update</p>
+                            <p className="block md:hidden text-xs" >Update</p>
+                          </BannerBtn>
                         </th>
                       </tr>
                     ))}
