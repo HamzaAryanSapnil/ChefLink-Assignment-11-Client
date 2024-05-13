@@ -7,6 +7,7 @@ import { useLoaderData } from "react-router-dom";
 const FoodUpdate = () => {
   const foodData = useLoaderData();
   const {
+    _id,
     email,
     foodName,
     price,
@@ -63,11 +64,11 @@ const FoodUpdate = () => {
     <div className="flex justify-center items-center flex-col gap-y-10 min-h-screen   mx-auto bg-[#faf9f5] p-4">
       <div className=" z-10 ">
         <h1 className="text-3xl md:text-5xl  font-bold text-center text-black ">
-          Add Your Own Food
+          Update Your Own Food
         </h1>
       </div>
       <div className="flex flex-col xl:flex-row-reverse w-full gap-4 justify-around items-center ">
-        <img src={foodImg} className="md:max-w-md rounded-lg shadow-2xl " />
+        <img src={foodImageUrl? foodImageUrl:foodImg} className="md:max-w-md rounded-lg shadow-2xl " />
 
         <div className="card shrink-0 w-full max-w-5xl  shadow-2xl bg-base-100">
           <form
