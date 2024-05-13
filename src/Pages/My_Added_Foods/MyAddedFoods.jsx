@@ -87,7 +87,7 @@ const MyAddedFoods = () => {
       ) : (
         <div className="">
           <div className="flex justify-center items-center my-10">
-            <h1 className="text-3xl font-bold">My Added Foods</h1>
+            <h1 className="text-3xl font-bold">My_Added_Foods</h1>
           </div>
 
           <div className="hero  ">

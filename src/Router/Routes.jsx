@@ -5,7 +5,7 @@ import NotFound from "../Pages/Not Found/NotFound";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Sign Up/Signup";
 import MyOrderedFoods from "../Pages/My Ordered Foods/MyOrderedFoods";
-import MyAddedFoods from "../Pages/My Added Foods/MyAddedFoods";
+import MyAddedFoods from "../Pages/My_Added_Foods/MyAddedFoods";
 import AllFoods from "../Pages/All_Foods/AllFoods";
 import Food_Details from "../Pages/Food_Details/Food_Details";
 import AddFood from "../Pages/Add_Food/AddFood";
