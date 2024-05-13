@@ -9,6 +9,8 @@ export default {
       colors: {
         bannerBtnBg: "#ea6a12",
         foodDetailsBg: "#fdfdf9",
+        allFoodPageBgRight: "#fbf9f0",
+        allFoodPageBgLeft: "#faf6f2",
       }
     },
   },
