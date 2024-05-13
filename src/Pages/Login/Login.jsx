@@ -158,7 +158,7 @@ const Login = () => {
           <p className=" my-4 text-center">
             New to car doctor ?{" "}
             <Link to="/signup" className="text-appointBtnColor font-medium">
-              Sign Up
+              Sign_Up
             </Link>{" "}
           </p>
         </div>

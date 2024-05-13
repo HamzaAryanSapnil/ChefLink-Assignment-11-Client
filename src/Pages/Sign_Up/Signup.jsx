@@ -45,7 +45,7 @@ const Signup = () => {
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <h1 className="text-4xl font-bold text-center text-dark2 ">
-              Sign Up
+              Sign_Up
             </h1>
             <div className="form-control">
               <label className="label">
@@ -200,7 +200,7 @@ const Signup = () => {
               )}
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Sign Up</button>
+              <button className="btn btn-primary">Sign_Up</button>
             </div>
           </form>
 
