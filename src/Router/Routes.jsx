@@ -10,7 +10,7 @@ import AllFoods from "../Pages/All_Foods/AllFoods";
 import Food_Details from "../Pages/Food_Details/Food_Details";
 import AddFood from "../Pages/Add_Food/AddFood";
 import PrivateRoute from "../Pages/Private/PrivateRoute";
-import FoodUpdate from "../Pages/Food Update/FoodUpdate";
+import FoodUpdate from "../Pages/Food_Update/FoodUpdate";
 
 const router = createBrowserRouter([
   {
