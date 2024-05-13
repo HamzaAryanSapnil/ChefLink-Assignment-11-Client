@@ -110,13 +110,24 @@ const Navbar = () => {
                   <Link to={"/my_added_foods"}>My added food items</Link>
                 </li>
                 <li>
-                  <Link to={"/add_food"}>Add a food item</Link>
+                  <Link to={"/add_food"}>Add Food</Link>
                 </li>
                 <li>
                   <Link to={"/my_ordered_foods"}>My ordered food items</Link>
                 </li>
               </ul>
             </div>
+            <ul>
+              <li>
+                <Link to={"/my_added_foods"}>My added food items</Link>
+              </li>
+              <li>
+                <Link to={"/add_food"}>Add Food</Link>
+              </li>
+              <li>
+                <Link to={"/my_ordered_foods"}>My ordered food items</Link>
+              </li>
+            </ul>
             <button
               onClick={handleLogout}
               className=" btn text-error btn-outline btn-error font-medium "
