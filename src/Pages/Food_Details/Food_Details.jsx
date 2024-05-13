@@ -4,7 +4,6 @@ import BannerBtnRoundedFull from "../../Components/Banner_Btn/BannerBtnRoundedFu
 
 const Food_Details = () => {
   const data = useLoaderData();
-  console.log(data);
   const {
     foodName,
     foodImageUrl,
@@ -53,7 +52,7 @@ const Food_Details = () => {
             <h3 className="text-2xl font-bold">Food Origin:</h3>
             <p className="text-xl">{foodOrigin}</p>
           </div>
-          <Link to={"/purchase"}>
+          <Link to={`/food_purchase/${data._id}`}>
             <BannerBtnRoundedFull>Purchase</BannerBtnRoundedFull>
           </Link>
         </div>
