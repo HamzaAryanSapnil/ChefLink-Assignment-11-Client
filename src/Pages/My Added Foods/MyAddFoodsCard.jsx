@@ -1,9 +1,12 @@
 
+import Swal from "sweetalert2";
 import BannerBtnRoundedFull from "../../Components/Banner Btn/BannerBtnRoundedFull";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import PropTypes from 'prop-types'
-const MyAddFoodsCard = ({item, handleDelete}) => {
-    const {_id, foodName, foodImageUrl, foodCategory, price } = item;
+import { useState } from "react";
+import { Link } from "react-router-dom";
+const MyAddFoodsCard = ({item, handleDelete, }) => {
+    const {_id, foodName, foodImageUrl, foodCategory, price,  } = item;
     // delete functionallity
     
   return (
@@ -20,7 +23,9 @@ const MyAddFoodsCard = ({item, handleDelete}) => {
         <p> Food Category: {foodCategory}</p>
         <p> Price: {price}</p>
         <div className="card-actions justify-end">
+          <Link to={`/food_update/${_id}`} >
           <BannerBtnRoundedFull>Update</BannerBtnRoundedFull>
+          </Link>
           <BannerBtnRoundedFull> <span onClick={() => handleDelete(_id)} >Delete</span></BannerBtnRoundedFull>
         </div>
       </div>

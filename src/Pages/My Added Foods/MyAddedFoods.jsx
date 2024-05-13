@@ -77,6 +77,8 @@ const MyAddedFoods = () => {
         }
       });
   };
+
+ 
   return (
     <div className="p-2">
       {isLoading ? (
