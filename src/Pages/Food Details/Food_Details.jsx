@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import PropTypes from "prop-types";
 import BannerBtnRoundedFull from "../../Components/Banner Btn/BannerBtnRoundedFull";
 
@@ -6,7 +6,6 @@ const Food_Details = () => {
   const data = useLoaderData();
   console.log(data);
   const {
-    _id,
     foodName,
     foodImageUrl,
     foodCategory,
@@ -23,7 +22,7 @@ const Food_Details = () => {
   // gap: 1rem/* 16px */;
   // padding: 1rem/* 16px */;
   return (
-    <div className="hero min-h-screen bg-base-200 p-4">
+    <div className="hero min-h-screen bg-foodDetailsBg p-4">
       <div className="hero-content max-w-full flex-col xl:flex-row ">
         <img
           src={
@@ -54,7 +53,9 @@ const Food_Details = () => {
             <h3 className="text-2xl font-bold">Food Origin:</h3>
             <p className="text-xl" >{foodOrigin}</p>
           </div>
+          <Link to={"/purchase"} >
           <BannerBtnRoundedFull>Purchase</BannerBtnRoundedFull>
+          </Link>
         </div>
       </div>
     </div>

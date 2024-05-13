@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         bannerBtnBg: "#ea6a12",
+        foodDetailsBg: "#fdfdf9",
       }
     },
   },
