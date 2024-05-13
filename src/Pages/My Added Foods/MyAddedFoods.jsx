@@ -92,14 +92,14 @@ const MyAddedFoods = () => {
           </div>
 
           <div className="hero  ">
-            <div className="hero-content justify-around max-w-full flex-col  lg:flex-row">
+            <div className="hero-content justify-around max-w-full flex-col  xl:flex-row">
               <img
                 src={
                   foodImg
                     ? foodImg
                     : "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
                 }
-                className="w-1/2 rounded-lg shadow-2xl"
+                className="w-full xl:w-1/2 rounded-lg shadow-2xl"
               />
               <div className="flex flex-col justify-center items-center gap-y-4">
                 {foodData?.map((item) => (

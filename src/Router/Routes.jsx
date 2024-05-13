@@ -54,6 +54,11 @@ import PrivateRoute from "../Pages/Private/PrivateRoute";
           element: <Food_Details/>,
           loader: ({params}) => fetch(`http://localhost:5000/allFoodItems/${params.id}`),
         },
+        {
+          path: "/food_update/:id",
+          element: <Food_Details/>,
+          loader: ({params}) => fetch(`http://localhost:5000/allFoodItems/${params.id}`),
+        },
       ],
     },
   

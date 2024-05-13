@@ -1,21 +1,20 @@
 
-import Swal from "sweetalert2";
+
 import BannerBtnRoundedFull from "../../Components/Banner Btn/BannerBtnRoundedFull";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import PropTypes from 'prop-types'
-import { useState } from "react";
 import { Link } from "react-router-dom";
 const MyAddFoodsCard = ({item, handleDelete, }) => {
     const {_id, foodName, foodImageUrl, foodCategory, price,  } = item;
     // delete functionallity
     
   return (
-    <div className="card w-full flex-row bg-base-100 shadow-xl ">
+    <div className="card w-full flex-col md:flex-row bg-base-100 shadow-xl ">
       <figure>
         <img
           src={foodImageUrl ? foodImageUrl : foodImg}
           alt="Shoes"
-          className="h-64 w-96"
+          className="md:h-64 md:w-96"
         />
       </figure>
       <div className="card-body">
