@@ -10,21 +10,14 @@ const FoodPurchase = () => {
   const data = useLoaderData();
   console.log(data);
   const {
-    _id,
-    email,
     foodName,
     price,
-    foodCategory,
     foodImageUrl,
-    description,
-    foodOrigin,
     quantity,
-    userName,
   } = data;
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm({
     defaultValues: {
       foodImageUrl,
@@ -66,13 +59,13 @@ const FoodPurchase = () => {
         Purchase Your {foodName}
       </h1>
       <div className="hero min-h-screen  p-4">
-        <div className="hero-content max-w-full w-full justify-around gap-10 flex-col lg:flex-row-reverse">
+        <div className="hero-content max-w-full w-full justify-around gap-10 flex-col xl:flex-row-reverse">
           <img
             src={foodImageUrl}
             alt=""
-            className="w-1/2 rounded-lg shadow-2xl"
+            className="xl:w-1/2 rounded-lg shadow-2xl"
           />
-          <div className="card shrink-0 w-1/2 shadow-2xl bg-base-100">
+          <div className="card shrink-0 xl:w-1/2 shadow-2xl bg-base-100">
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="card-body grid grid-cols-1 md:grid-cols-2"
