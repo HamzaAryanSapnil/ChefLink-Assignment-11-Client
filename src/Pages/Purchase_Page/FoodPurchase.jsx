@@ -50,6 +50,9 @@ const FoodPurchase = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
+        if (result.insertedId) {
+            Swal.fire("Purchased", "Your food has been purchased", "success");
+        }
       })
       .catch((err) => {
         console.error(err);
