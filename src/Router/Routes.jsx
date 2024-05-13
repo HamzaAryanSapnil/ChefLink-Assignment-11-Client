@@ -39,6 +39,7 @@ import AddFood from "../Pages/Add_Food/AddFood";
         {
           path: "/my_added_foods",
           element: <MyAddedFoods/>,
+          loader: () => fetch(""),
         },
         {
           path: "/add_food",

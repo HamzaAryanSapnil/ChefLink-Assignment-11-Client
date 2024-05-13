@@ -4,7 +4,7 @@ import BannerBtn from "../Banner Btn/BannerBtn";
 import { Link } from "react-router-dom";
 const Banner = () => {
   return (
-    <div className=" carousel w-full min-h-screen ">
+    <div className=" carousel w-full min-h-screen z-0">
       <div
       style={{backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),url(${bgImg})`}}
       id="slide1" className="carousel-item relative w-full bg-cover bg-center bg-[#fbf9f0]">

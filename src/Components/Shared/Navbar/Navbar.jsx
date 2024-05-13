@@ -43,7 +43,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="mt-4">
+    <div className="mt-4 z-10 ">
       <div className="navbar bg-base-100 font-mulish text-navCol">
         <div className="navbar-start">
           <div className="dropdown">
@@ -81,18 +81,20 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         {user ? (
-          <div className="navbar-end">
+          <div className="navbar-end md:mr-4">
             {/* here in this img if i click i will see a dropdown comes down in the dropdown there will be there will be three routes:
  1. Myaddedfooditems
  2. Addafooditem
  3. Myorderedfooditems */}
+ <div className="inline-block relative dropdown dropdown-hover dropdown-left " >
+  
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar tooltip dropdown dropdown-end"
+              className="btn btn-ghost btn-circle avatar tooltip "
               data-tip={user?.displayName ? user?.displayName : "User"}
             >
-              <div className="w-10 rounded-full " tabIndex={0} role="button">
+              <div className="w-10 rounded-full "  tabIndex={0} role="button">
                 <img
                   alt="Tailwind CSS Navbar component"
                   src={
@@ -102,9 +104,55 @@ const Navbar = () => {
                   }
                 />
               </div>
+              </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content z-10 menu p-2 mt-3 shadow bg-base-100 rounded-box w-52"
+              >
+                <Link to={"/my_added_foods"} className="my-2"  >
+                  <button className="btn">
+
+                <li>
+                My added food items
+                </li>
+                  </button  >
+                </Link>
+                <Link to={"/add_food"} className="my-2"  >
+                  <button  className="btn" >
+
+                <li>
+                Add Food
+                </li>
+                  </button>
+                </Link>
+                <Link to={"/my_ordered_foods"} className="my-2"  >
+                  <button  className="btn" >
+
+                <li>
+                My ordered food items
+                </li>
+                  </button>
+                </Link>
+              </ul>
+            </div>
+
+            {/* <div className="dropdown inline-block relative">
+              <div tabIndex={0} role="button" className="btn btn-ghost rounded-full">
+              <div className="w-10 rounded-full " tabIndex={0} role="button">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  className="rounded-full"
+                  src={
+                    user?.photoURL
+                      ? user?.photoURL
+                      : "https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
+                  }
+                />
+              </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
                   <Link to={"/my_added_foods"}>My added food items</Link>
@@ -113,11 +161,13 @@ const Navbar = () => {
                   <Link to={"/add_food"}>Add Food</Link>
                 </li>
                 <li>
-                  <Link to={"/my_ordered_foods"}>My ordered food items</Link>
+                  <Link to={"/my_ordered_foods"}>
+                    My ordered food items
+                  </Link>
                 </li>
               </ul>
-            </div>
-            <ul>
+            </div> */}
+            {/* <ul>
               <li>
                 <Link to={"/my_added_foods"}>My added food items</Link>
               </li>
@@ -127,7 +177,7 @@ const Navbar = () => {
               <li>
                 <Link to={"/my_ordered_foods"}>My ordered food items</Link>
               </li>
-            </ul>
+            </ul> */}
             <button
               onClick={handleLogout}
               className=" btn text-error btn-outline btn-error font-medium "
