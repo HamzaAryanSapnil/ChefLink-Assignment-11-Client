@@ -22,7 +22,7 @@ const Top_Foods_Cards = ({ topFood }) => {
         <p>Price: {price}</p>
         <div className="card-actions ">
           <Link to={`/food_details/${_id}`}>
-            <BannerBtnRoundedFull>View Full Food Details</BannerBtnRoundedFull>
+            <BannerBtnRoundedFull>View Full Food_Details</BannerBtnRoundedFull>
           </Link>
         </div>
       </div>
