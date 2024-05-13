@@ -17,11 +17,11 @@ const PrivateRoute = ({ children }) => {
       </div>
     );
   }
-  if (user) {
+  if (user?.email) {
     return children;
   }
 
-  return <Navigate to="/login" state={location.pathname} />;
+  return <Navigate to="/login" state={location.pathname} replace/>;
 };
 
 PrivateRoute.propTypes = {
