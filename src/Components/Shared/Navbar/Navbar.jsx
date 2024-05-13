@@ -65,7 +65,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-40 p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navLinks}
             </ul>
@@ -86,7 +86,7 @@ const Navbar = () => {
  1. Myaddedfooditems
  2. Addafooditem
  3. Myorderedfooditems */}
- <div className="inline-block relative dropdown dropdown-hover dropdown-left " >
+ <div className="inline-block relative dropdown dropdown-hover  dropdown-left " >
   
             <div
               tabIndex={0}
@@ -107,7 +107,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-10 menu p-2 mt-3 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content z-40 menu p-2 mt-3 shadow bg-base-100 rounded-box md:w-52 w-40"
               >
                 <Link to={"/my_added_foods"} className="my-2"  >
                   <button className="btn">
