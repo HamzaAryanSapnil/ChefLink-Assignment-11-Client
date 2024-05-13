@@ -37,7 +37,7 @@ const FoodUpdate = () => {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     const formValues = getValues();
     console.log(formValues);
     fetch(`http://localhost:5000/allFoodItems/${_id}`, {
