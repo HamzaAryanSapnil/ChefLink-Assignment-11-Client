@@ -23,7 +23,7 @@ const Banner = () => {
             </h1>
             <p className="text-lg">Delicious dishes, unforgettable moments.</p>
             <Link to={"/all_foods"}>
-              <BannerBtn>See All Foods</BannerBtn>
+              <BannerBtn>See All_Foods</BannerBtn>
             </Link>
           </div>
           <div>

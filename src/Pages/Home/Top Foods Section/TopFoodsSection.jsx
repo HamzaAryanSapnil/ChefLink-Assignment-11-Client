@@ -35,7 +35,7 @@ const TopFoodsSection = () => {
       </div>
       <div className="w-full flex justify-center items-center ">
         <Link to={"/all_foods"}>
-          <BannerBtnRoundedFull>See All Foods</BannerBtnRoundedFull>
+          <BannerBtnRoundedFull>See All_Foods</BannerBtnRoundedFull>
         </Link>
       </div>
     </div>
