@@ -3,6 +3,7 @@ import { AuthContext } from "../../Auth_Provider/AuthProvider";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import MyAddFoodsCard from "./MyAddFoodsCard";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const MyAddedFoods = () => {
   const { user } = useContext(AuthContext);
@@ -17,12 +18,12 @@ const MyAddedFoods = () => {
 
   useEffect(() => {
     if (url) {
-      fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-          setFoodData(data);
+      axios.get(url)
+        .then(res => {
+          setFoodData(res.data);
           setIsLoading(false);
-        });
+        })
+        .catch(err => console.log(err));
     }
   }, [url]);
 
@@ -31,8 +32,8 @@ const MyAddedFoods = () => {
     // delete data from server
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
+        confirmButton: "btn btn-success text-white",
+        cancelButton: "btn bg-bannerBtnBg text-white",
       },
       buttonsStyling: false,
     });
@@ -48,13 +49,10 @@ const MyAddedFoods = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/allFoodItems/${_id}`, {
-            method: "DELETE",
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
-              if (data.deletedCount > 0) {
+          axios.delete(`http://localhost:5000/allFoodItems/${_id}`)
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.deletedCount > 0) {
                 const remaining = foodData?.filter((food) => food._id !== _id);
                 setFoodData(remaining);
                 swalWithBootstrapButtons.fire({

@@ -23,10 +23,12 @@ const MyAddFoodsCard = ({ item, handleDelete }) => {
           <Link to={`/food_update/${_id}`}>
             <BannerBtnRoundedFull>Update</BannerBtnRoundedFull>
           </Link>
+          <span onClick={() => handleDelete(_id)}>
           <BannerBtnRoundedFull>
             {" "}
-            <span onClick={() => handleDelete(_id)}>Delete</span>
+            Delete
           </BannerBtnRoundedFull>
+          </span>
         </div>
       </div>
     </div>
