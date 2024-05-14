@@ -1,4 +1,4 @@
-import {  useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import moment from "moment";
@@ -11,17 +11,9 @@ const FoodPurchase = () => {
   const data = useLoaderData();
   const navigete = useNavigate();
   console.log(data);
-  const {
-    foodName,
-    price,
-    foodImageUrl,
-    quantity,
-  } = data;
-  // fetch(`http://localhost:5000/allFoodItems/${params.id}`)
-  const {
-    register,
-    handleSubmit,
-  } = useForm({
+  const { foodName, price, foodImageUrl, quantity } = data;
+  // fetch(`https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${params.id}`)
+  const { register, handleSubmit } = useForm({
     defaultValues: {
       foodImageUrl,
       foodName,
@@ -36,7 +28,11 @@ const FoodPurchase = () => {
   const onSubmit = (data) => {
     console.log(data);
     // send data to server in purchase collection and after sending data to server use sweet alert to show success
-    axios.post("http://localhost:5000/purchasedFood", data)
+    axios
+      .post(
+        "https://assignment-11-server-seven-pi.vercel.app/purchasedFood",
+        data
+      )
       .then((result) => {
         console.log(result);
         if (result.data.insertedId) {
@@ -154,7 +150,6 @@ const FoodPurchase = () => {
                 </button>
               </div>
             </form>
-            
           </div>
         </div>
       </div>

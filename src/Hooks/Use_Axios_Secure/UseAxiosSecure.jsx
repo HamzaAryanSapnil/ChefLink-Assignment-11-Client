@@ -4,39 +4,38 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-    baseURL: "http://localhost:5000",
-    withCredentials: true
+  baseURL: "https://assignment-11-server-seven-pi.vercel.app",
+  withCredentials: true,
 });
 
 const useAxiosSecure = () => {
-    const {logOut} = useAuth();
-    const navigate = useNavigate();
+  const { logOut } = useAuth();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-      axiosSecure.interceptors.response.use((res) => {
+  useEffect(() => {
+    axiosSecure.interceptors.response.use(
+      (res) => {
         return res;
-      }, (error) => {
+      },
+      (error) => {
         console.log("error tracked in interceptor", error.response);
         if (error.response.status === 401 || error.response.status === 403) {
-            logOut()
+          logOut()
             .then(() => {
               console.log("Logout");
-              navigate('/login');
+              navigate("/login");
             })
             .catch((error) => {
               console.log(error);
             });
-          
         }
-      })
-    
-      
-    }, [])
-    
+      }
+    );
+  }, []);
 
-    //
-    
-    return axiosSecure;
+  //
+
+  return axiosSecure;
 };
 
 export default useAxiosSecure;

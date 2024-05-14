@@ -42,12 +42,17 @@ const FoodUpdate = () => {
   const onSubmit = () => {
     const formValues = getValues();
     console.log(formValues);
-    axios.put(`http://localhost:5000/allFoodItems/${_id}`, formValues, {
-      headers: {
-        "content-type": "application/json",
-      },
-      withCredentials: true,
-    })
+    axios
+      .put(
+        `https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${_id}`,
+        formValues,
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           Swal.fire("Updated", "Your food has been updated", "success");
@@ -69,7 +74,10 @@ const FoodUpdate = () => {
         </h1>
       </div>
       <div className="flex flex-col xl:flex-row-reverse w-full gap-4 justify-around items-center ">
-        <img src={foodImageUrl? foodImageUrl:foodImg} className="md:max-w-md rounded-lg shadow-2xl " />
+        <img
+          src={foodImageUrl ? foodImageUrl : foodImg}
+          className="md:max-w-md rounded-lg shadow-2xl "
+        />
 
         <div className="card shrink-0 w-full max-w-5xl  shadow-2xl bg-base-100">
           <form

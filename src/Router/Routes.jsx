@@ -30,10 +30,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/food_purchase/:id",
-        element: <PrivateRoute><FoodPurchase /></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allFoodItems/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <FoodPurchase />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${params.id}`
+          ),
       },
-
 
       {
         path: "/login",
@@ -53,19 +59,34 @@ const router = createBrowserRouter([
       },
       {
         path: "/add_food",
-        element: <PrivateRoute><AddFood /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AddFood />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my_ordered_foods",
-        element: <PrivateRoute><MyOrderedFoods/></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyOrderedFoods />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/food_details/:id",
-        element: <PrivateRoute><Food_Details /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Food_Details />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allFoodItems/${params.id}`, {
-            credentials: "include",
-          }),
+          fetch(
+            `https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${params.id}`,
+            {
+              credentials: "include",
+            }
+          ),
       },
       {
         path: "/food_update/:id",
@@ -75,7 +96,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allFoodItems/${params.id}`),
+          fetch(
+            `https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${params.id}`
+          ),
       },
     ],
   },

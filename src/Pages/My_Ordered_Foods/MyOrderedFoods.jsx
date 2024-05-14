@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import MyOrderedFoodTableRow from "./MyOrderedFoodTableRow";
 import Swal from "sweetalert2";
@@ -17,7 +17,7 @@ const MyOrderedFoods = () => {
     axiosSecure.get(url).then((res) => {
       setPurchasedFood(res.data);
       setIsLoading(false);
-    })
+    });
     // axios
     //   .get(url, {
     //     withCredentials: true,
@@ -29,8 +29,6 @@ const MyOrderedFoods = () => {
     //   .catch((err) => {
     //     console.log(err);
     //   });
-
-      
   }, [url, axiosSecure]);
 
   const handleDelete = (_id) => {
@@ -54,9 +52,12 @@ const MyOrderedFoods = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/purchasedFood/${_id}`, {
-            method: "DELETE",
-          })
+          fetch(
+            `https://assignment-11-server-seven-pi.vercel.app/purchasedFood/${_id}`,
+            {
+              method: "DELETE",
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
@@ -86,13 +87,16 @@ const MyOrderedFoods = () => {
   };
 
   const handleConfirm = (_id) => {
-    fetch(`http://localhost:5000/purchasedFood/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ status: "confirm" }),
-    })
+    fetch(
+      `https://assignment-11-server-seven-pi.vercel.app/purchasedFood/${_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ status: "confirm" }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

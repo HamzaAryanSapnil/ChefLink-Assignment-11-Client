@@ -12,20 +12,23 @@ const MyAddedFoods = () => {
   const [url, setUrl] = useState("");
   useEffect(() => {
     if (user?.email) {
-      setUrl(`http://localhost:5000/allFoodItems?email=${user?.email}`);
+      setUrl(
+        `https://assignment-11-server-seven-pi.vercel.app/allFoodItems?email=${user?.email}`
+      );
     }
   }, [user]);
 
   useEffect(() => {
     if (url) {
-      axios.get(url, {
-        withCredentials: true,
-      })
-        .then(res => {
+      axios
+        .get(url, {
+          withCredentials: true,
+        })
+        .then((res) => {
           setFoodData(res.data);
           setIsLoading(false);
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     }
   }, [url]);
 
@@ -51,7 +54,10 @@ const MyAddedFoods = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://localhost:5000/allFoodItems/${_id}`)
+          axios
+            .delete(
+              `https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${_id}`
+            )
             .then((res) => {
               console.log(res.data);
               if (res.data.deletedCount > 0) {

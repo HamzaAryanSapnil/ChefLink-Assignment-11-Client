@@ -1,4 +1,3 @@
-
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/3d-fluency-google-logo.png";
@@ -24,15 +23,17 @@ const Login = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         // get jwt token
-        const user = {email};
-        axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
-        .then(data => {
-          console.log(data.data);
-          if (data.data.success) {
-            
-        navigate(location?.state ? location.state : "/");
-          }
-        })
+        const user = { email };
+        axios
+          .post("https://assignment-11-server-seven-pi.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
+          .then((data) => {
+            console.log(data.data);
+            if (data.data.success) {
+              navigate(location?.state ? location.state : "/");
+            }
+          });
       })
       .catch((error) => {
         console.error(error);
