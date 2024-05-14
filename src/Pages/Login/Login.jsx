@@ -23,12 +23,15 @@ const Login = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        navigate(location?.state ? location.state : "/");
         // get jwt token
         const user = {email};
-        axios.post('http://localhost:5000/jwt', user)
+        axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
         .then(data => {
           console.log(data.data);
+          if (data.data.success) {
+            
+        navigate(location?.state ? location.state : "/");
+          }
           // localStorage.setItem('access-token', data.data.token); 
         })
       })
