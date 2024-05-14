@@ -23,6 +23,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         navigate(location?.state ? location.state : "/");
+        // get jwt token
       })
       .catch((error) => {
         console.error(error);
