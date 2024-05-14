@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Auth_Provider/AuthProvider";
 import googleIcon from "../../assets/3d-fluency-google-logo.png";
 import githubIcon from "../../assets/github.png";
+import axios from "axios";
 const Login = () => {
   const { logIn, googleLogin, githubLogin } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -20,10 +21,16 @@ const Login = () => {
     const password = data.password;
     logIn(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
         navigate(location?.state ? location.state : "/");
         // get jwt token
+        const user = {email};
+        axios.post('http://localhost:5000/jwt', user)
+        .then(data => {
+          console.log(data.data);
+          // localStorage.setItem('access-token', data.data.token); 
+        })
       })
       .catch((error) => {
         console.error(error);

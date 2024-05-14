@@ -6,7 +6,6 @@ const MyOrderedFoodTableRow = ({
   handleDelete,
   handleConfirm,
 }) => {
-  console.log(purchasedFood);
   const {
     foodName,
     buyingDate,
