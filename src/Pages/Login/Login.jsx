@@ -1,12 +1,12 @@
-import { useContext } from "react";
+
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Auth_Provider/AuthProvider";
 import googleIcon from "../../assets/3d-fluency-google-logo.png";
 import githubIcon from "../../assets/github.png";
 import axios from "axios";
+import UseAuth from "../../Hooks/UseAuth/UseAuth";
 const Login = () => {
-  const { logIn, googleLogin, githubLogin } = useContext(AuthContext);
+  const { logIn, googleLogin, githubLogin } = UseAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const {

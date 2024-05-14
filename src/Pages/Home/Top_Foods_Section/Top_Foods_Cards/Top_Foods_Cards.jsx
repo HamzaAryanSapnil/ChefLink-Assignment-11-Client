@@ -13,7 +13,7 @@ const Top_Foods_Cards = ({ topFood }) => {
               : "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
           }
           alt="Shoes"
-          className="h-64 w-full"
+          className="h-64 w-full xl:w-96"
         />
       </figure>
       <div className="card-body">

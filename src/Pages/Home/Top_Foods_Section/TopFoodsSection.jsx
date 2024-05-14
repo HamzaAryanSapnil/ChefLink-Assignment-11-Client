@@ -2,14 +2,20 @@ import { useEffect, useState } from "react";
 import BannerBtnRoundedFull from "../../../Components/Banner_Btn/BannerBtnRoundedFull";
 import { Link } from "react-router-dom";
 import Top_Foods_Cards from "./Top_Foods_Cards/Top_Foods_Cards";
+import axios from "axios";
 
 const TopFoodsSection = () => {
   // get data from all food
+
   const [topFoods, setTopFoods] = useState([]);
+  
+
+  
+  
   useEffect(() => {
-    fetch("http://localhost:5000/allFoodItems")
-      .then((res) => res.json())
-      .then((data) => setTopFoods(data));
+    axios.get("http://localhost:5000/allFoodItems")
+      .then((res) => setTopFoods(res.data));
+
   }, []);
 
   return (
@@ -25,7 +31,7 @@ const TopFoodsSection = () => {
           most-loved creations that keep our customers coming back for more.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 container mx-auto justify-items-center justify-center items-center gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 container mx-auto justify-items-center justify-center items-center gap-10">
         {topFoods.slice(0, 6).map((topFood) => (
           <Top_Foods_Cards
             key={topFood._id}

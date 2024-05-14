@@ -1,32 +1,38 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Auth_Provider/AuthProvider";
+import {  useEffect, useState } from "react";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import MyOrderedFoodTableRow from "./MyOrderedFoodTableRow";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import BannerBtn from "../../Components/Banner_Btn/BannerBtn";
+import UseAuth from "../../Hooks/UseAuth/UseAuth";
+import useAxiosSecure from "../../Hooks/Use_Axios_Secure/UseAxiosSecure";
 
 const MyOrderedFoods = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = UseAuth();
+  const axiosSecure = useAxiosSecure();
   const [purchasedFood, setPurchasedFood] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const url = `http://localhost:5000/purchasedFood?email=${user?.email}`;
+  const url = `/purchasedFood?email=${user?.email}`;
   useEffect(() => {
-    axios
-      .get(url, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        setPurchasedFood(res.data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    axiosSecure.get(url).then((res) => {
+      setPurchasedFood(res.data);
+      setIsLoading(false);
+    })
+    // axios
+    //   .get(url, {
+    //     withCredentials: true,
+    //   })
+    //   .then((res) => {
+    //     setPurchasedFood(res.data);
+    //     setIsLoading(false);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
 
       
-  }, [url]);
+  }, [url, axiosSecure]);
 
   const handleDelete = (_id) => {
     const swalWithBootstrapButtons = Swal.mixin({
