@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import moment from "moment";
 import { useContext } from "react";
 import { AuthContext } from "../../Auth_Provider/AuthProvider";
+import axios from "axios";
 
 const FoodPurchase = () => {
   const { user } = useContext(AuthContext);
@@ -16,6 +17,7 @@ const FoodPurchase = () => {
     foodImageUrl,
     quantity,
   } = data;
+  // fetch(`http://localhost:5000/allFoodItems/${params.id}`)
   const {
     register,
     handleSubmit,
@@ -34,19 +36,12 @@ const FoodPurchase = () => {
   const onSubmit = (data) => {
     console.log(data);
     // send data to server in purchase collection and after sending data to server use sweet alert to show success
-    fetch("http://localhost:5000/purchasedFood", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
+    axios.post("http://localhost:5000/purchasedFood", data)
       .then((result) => {
         console.log(result);
-        if (result.insertedId) {
-            Swal.fire("Purchased", "Your food has been purchased", "success");
-            navigete("/my_ordered_foods");
+        if (result.data.insertedId) {
+          Swal.fire("Purchased", "Your food has been purchased", "success");
+          navigete("/my_ordered_foods");
         }
       })
       .catch((err) => {

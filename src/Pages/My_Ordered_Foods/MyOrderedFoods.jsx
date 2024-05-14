@@ -25,14 +25,6 @@ const MyOrderedFoods = () => {
         console.log(err);
       });
 
-      // fetch(url)
-      // -     .then((res) => res.json())
-      //       .then((data) => {        setPurchasedFood(data);
-      //         setIsLoading(false);
-      //      })
-      //      .catch(err => {
-      //        console.log(err);
-      //       });
       
   }, [url]);
 

@@ -5,8 +5,14 @@ import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import router from "./Router/Routes.jsx";
 import AuthProvider from "./Auth_Provider/AuthProvider.jsx";
+
+// axios default credentials
+// Axios.defaults.withCredentials = true;
+
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
     <RouterProvider router={router} />
   </AuthProvider>
 );
+
