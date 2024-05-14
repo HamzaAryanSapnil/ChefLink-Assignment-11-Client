@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BannerBtnRoundedFull from "../../../Components/Banner_Btn/BannerBtnRoundedFull";
 import { Link } from "react-router-dom";
-import Top_Foods_Cards from "./Top Foods Cards/Top_Foods_Cards";
+import Top_Foods_Cards from "./Top_Foods_Cards/Top_Foods_Cards";
 
 const TopFoodsSection = () => {
   // get data from all food
