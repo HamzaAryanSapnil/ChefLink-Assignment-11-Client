@@ -11,6 +11,11 @@ export default {
         foodDetailsBg: "#fdfdf9",
         allFoodPageBgRight: "#fbf9f0",
         allFoodPageBgLeft: "#faf6f2",
+        BeigeCream: "#F5F5DC",
+        LightBlue: "#ADD8E6",
+        PastelYellow: "#FFFACD",
+        PastelPink: "#FFDAB9",
+        PastelLavender: "#E6E6FA",
       }
     },
   },

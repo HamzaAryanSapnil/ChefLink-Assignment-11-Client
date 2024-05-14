@@ -71,6 +71,31 @@ const MyOrderedFoods = () => {
   };
 
 
+  const handleConfirm = (_id) => {
+    fetch(`http://localhost:5000/purchasedFood/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ status: "confirm" }),
+
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.modifiedCount > 0) {
+        const remaining = purchasedFood.filter(
+          (food) => food._id !== _id
+        );
+        const updated = purchasedFood.find((food) => food._id === _id);
+        updated.status = "confirm";
+        const newPurchasedFood = [updated, ...remaining];
+        setPurchasedFood(newPurchasedFood);
+        Swal.fire("Confirmed!", "Your food has been confirmed.", "success");
+      }
+    })
+
+  };
   return (
     <div>
       {isLoading ? (
@@ -81,8 +106,8 @@ const MyOrderedFoods = () => {
         <div>
 
           <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row">
-              <img src={foodImg} className="max-w-sm rounded-lg shadow-2xl" />
+            <div className="hero-content flex-col xl:flex-row">
+              <img src={foodImg} className="md:max-w-sm  rounded-lg shadow-2xl" />
               <div className="overflow-x-auto">
                 <table className="table">
                   {/* head */}
@@ -91,9 +116,9 @@ const MyOrderedFoods = () => {
                       <th>
                       </th>
                       <th>Food Name</th>
-                      <th>Customer Name</th>
-                      <th>Buying Date</th>
-                      <th>Status</th>
+                      <th className="hidden md:table-cell" >Customer Name</th>
+                      <th className="hidden md:table-cell" >Buying Date</th>
+                      <th className="hidden md:table-cell" >Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -103,6 +128,7 @@ const MyOrderedFoods = () => {
                       key={purchasedFood._id}
                       purchasedFood={purchasedFood}
                       handleDelete={handleDelete}
+                      handleConfirm={handleConfirm}
                       ></MyOrderedFoodTableRow>
                     ))}
                    </tbody>

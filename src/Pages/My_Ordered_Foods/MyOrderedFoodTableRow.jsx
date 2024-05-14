@@ -1,37 +1,34 @@
-import React from "react";
 import PropTypes from "prop-types";
-import Swal from "sweetalert2";
+import DeleteCircle from "../../Components/Banner_Btn/DeleteCircle";
 
-const MyOrderedFoodTableRow = ({ purchasedFood,handleDelete }) => {
+const MyOrderedFoodTableRow = ({
+  purchasedFood,
+  handleDelete,
+  handleConfirm,
+}) => {
   console.log(purchasedFood);
-  const { foodName, buyingDate, foodImageUrl, price, _id, userName, email } =
-    purchasedFood;
-    
+  const {
+    foodName,
+    buyingDate,
+    foodImageUrl,
+    price,
+    _id,
+    userName,
+    email,
+    status,
+  } = purchasedFood;
 
   return (
     <tr>
       <th>
-        <button onClick={() => handleDelete(_id)} className="btn btn-sm btn-circle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
+        <span onClick={() => handleDelete(_id)}>
+          <DeleteCircle></DeleteCircle>
+        </span>
       </th>
       <td>
         <div className="flex items-center gap-3">
           <div className="avatar">
-            <div className="mask mask-squircle w-24 h-24">
+            <div className="mask mask-squircle w-10 md:w-24 h-10 md:h-24">
               <img
                 src={
                   foodImageUrl
@@ -43,19 +40,30 @@ const MyOrderedFoodTableRow = ({ purchasedFood,handleDelete }) => {
             </div>
           </div>
           <div>
-            <div className="font-bold">{foodName}</div>
-            <div className="text-sm opacity-50">{price}Tk</div>
+            <div className="font-bold md:text-base text-xs">{foodName}</div>
+            <div className="md:text-sm opacity-50 text-xs">{price}Tk</div>
           </div>
         </div>
       </td>
       <td>
-        {userName}
+       <p className="hidden md:table-cell" > {userName}</p>
         <br />
-        <span className="badge badge-ghost badge-sm">{email}</span>
+        <span className="hidden md:badge badge-ghost badge-sm">{email}</span>
       </td>
-      <td>{buyingDate}</td>
-      <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+      <td className="hidden  md:table-cell" >{buyingDate}</td>
+      <th className=" p-0 m-0 md:p-2 md:m-2" >
+        {status === "confirm" ? (
+          <button className="btn text-success bg-PastelYellow  p-0 m-0 md:p-2 md:m-2">
+            Confirmed
+          </button>
+        ) : (
+          <button
+            onClick={() => handleConfirm(_id)}
+            className="btn bg-bannerBtnBg text-white btn-xs md:btn-sm"
+          >
+            Pending
+          </button>
+        )}
       </th>
     </tr>
   );
@@ -64,6 +72,7 @@ const MyOrderedFoodTableRow = ({ purchasedFood,handleDelete }) => {
 MyOrderedFoodTableRow.propTypes = {
   purchasedFood: PropTypes.object,
   handleDelete: PropTypes.func,
+  handleConfirm: PropTypes.func,
 };
 
 export default MyOrderedFoodTableRow;
