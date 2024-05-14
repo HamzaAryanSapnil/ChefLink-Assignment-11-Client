@@ -18,7 +18,9 @@ const MyAddedFoods = () => {
 
   useEffect(() => {
     if (url) {
-      axios.get(url)
+      axios.get(url, {
+        withCredentials: true,
+      })
         .then(res => {
           setFoodData(res.data);
           setIsLoading(false);

@@ -2,11 +2,12 @@ import { useForm } from "react-hook-form";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import Swal from "sweetalert2";
 import BannerBtn from "../../Components/Banner_Btn/BannerBtn";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const FoodUpdate = () => {
   const foodData = useLoaderData();
+  const navigate = useNavigate();
   const {
     _id,
     email,
@@ -45,10 +46,12 @@ const FoodUpdate = () => {
       headers: {
         "content-type": "application/json",
       },
+      withCredentials: true,
     })
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           Swal.fire("Updated", "Your food has been updated", "success");
+          navigate("/my_added_foods");
         } else {
           Swal.fire("Error", "Error updating food", "error");
         }
