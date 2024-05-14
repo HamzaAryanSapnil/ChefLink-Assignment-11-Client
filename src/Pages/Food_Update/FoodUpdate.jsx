@@ -3,6 +3,7 @@ import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import Swal from "sweetalert2";
 import BannerBtn from "../../Components/Banner_Btn/BannerBtn";
 import { useLoaderData } from "react-router-dom";
+import axios from "axios";
 
 const FoodUpdate = () => {
   const foodData = useLoaderData();
@@ -40,16 +41,13 @@ const FoodUpdate = () => {
   const onSubmit = () => {
     const formValues = getValues();
     console.log(formValues);
-    fetch(`http://localhost:5000/allFoodItems/${_id}`, {
-      method: "PUT",
+    axios.put(`http://localhost:5000/allFoodItems/${_id}`, formValues, {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(formValues),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
           Swal.fire("Updated", "Your food has been updated", "success");
         } else {
           Swal.fire("Error", "Error updating food", "error");

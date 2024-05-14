@@ -1,9 +1,11 @@
-
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Auth_Provider/AuthProvider";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import MyOrderedFoodTableRow from "./MyOrderedFoodTableRow";
 import Swal from "sweetalert2";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import BannerBtn from "../../Components/Banner_Btn/BannerBtn";
 
 const MyOrderedFoods = () => {
   const { user } = useContext(AuthContext);
@@ -11,12 +13,27 @@ const MyOrderedFoods = () => {
   const [isLoading, setIsLoading] = useState(true);
   const url = `http://localhost:5000/purchasedFood?email=${user?.email}`;
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setPurchasedFood(data);
+    axios
+      .get(url, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setPurchasedFood(res.data);
         setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
       });
+
+      // fetch(url)
+      // -     .then((res) => res.json())
+      //       .then((data) => {        setPurchasedFood(data);
+      //         setIsLoading(false);
+      //      })
+      //      .catch(err => {
+      //        console.log(err);
+      //       });
+      
   }, [url]);
 
   const handleDelete = (_id) => {
@@ -48,7 +65,8 @@ const MyOrderedFoods = () => {
               console.log(data);
               if (data.deletedCount > 0) {
                 const remaining = purchasedFood.filter(
-                  (food) => food._id !== _id );
+                  (food) => food._id !== _id
+                );
                 setPurchasedFood(remaining);
                 swalWithBootstrapButtons.fire({
                   title: "Deleted!",
@@ -70,7 +88,6 @@ const MyOrderedFoods = () => {
       });
   };
 
-
   const handleConfirm = (_id) => {
     fetch(`http://localhost:5000/purchasedFood/${_id}`, {
       method: "PATCH",
@@ -78,23 +95,19 @@ const MyOrderedFoods = () => {
         "content-type": "application/json",
       },
       body: JSON.stringify({ status: "confirm" }),
-
     })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      if (data.modifiedCount > 0) {
-        const remaining = purchasedFood.filter(
-          (food) => food._id !== _id
-        );
-        const updated = purchasedFood.find((food) => food._id === _id);
-        updated.status = "confirm";
-        const newPurchasedFood = [updated, ...remaining];
-        setPurchasedFood(newPurchasedFood);
-        Swal.fire("Confirmed!", "Your food has been confirmed.", "success");
-      }
-    })
-
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          const remaining = purchasedFood.filter((food) => food._id !== _id);
+          const updated = purchasedFood.find((food) => food._id === _id);
+          updated.status = "confirm";
+          const newPurchasedFood = [updated, ...remaining];
+          setPurchasedFood(newPurchasedFood);
+          Swal.fire("Confirmed!", "Your food has been confirmed.", "success");
+        }
+      });
   };
   return (
     <div>
@@ -102,37 +115,55 @@ const MyOrderedFoods = () => {
         <div className="flex justify-center items-center min-h-screen">
           <span className="loading loading-spinner loading-lg"></span>
         </div>
+      ) : purchasedFood.length === 0 ? (
+        <div className="flex justify-center items-center min-h-screen p-4 gap-y-4">
+          <div className="text-center">
+            <p className="text-2xl font-bold my-6">
+              Oops! It looks like you haven&apos;t purchased any food yet.
+            </p>
+            <Link to={"/"}>
+              <BannerBtn>Go to Home and Start Shopping</BannerBtn>
+            </Link>
+          </div>
+        </div>
       ) : (
         <div>
-
           <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col xl:flex-row">
-              <img src={foodImg} className="md:max-w-sm  rounded-lg shadow-2xl" />
+              <img
+                src={foodImg}
+                className="md:max-w-sm rounded-lg shadow-2xl"
+                alt="Food"
+              />
               <div className="overflow-x-auto">
                 <table className="table">
                   {/* head */}
                   <thead>
                     <tr>
-                      <th>
-                      </th>
+                      <th></th>
                       <th>Food Name</th>
-                      <th className="hidden md:table-cell" >Customer Name</th>
-                      <th className="hidden md:table-cell" >Buying Date</th>
-                      <th className="hidden md:table-cell" >Status</th>
+                      <th className="hidden md:table-cell">Customer Name</th>
+                      <th className="hidden md:table-cell">Buying Date</th>
+                      <th className="hidden md:table-cell">Status</th>
                     </tr>
                   </thead>
                   <tbody>
                     {/* row 1 */}
-                    {purchasedFood.map((purchasedFood) => (
-                      <MyOrderedFoodTableRow 
-                      key={purchasedFood._id}
-                      purchasedFood={purchasedFood}
-                      handleDelete={handleDelete}
-                      handleConfirm={handleConfirm}
-                      ></MyOrderedFoodTableRow>
+                    {purchasedFood.map((item) => (
+                      <MyOrderedFoodTableRow
+                        key={item._id}
+                        purchasedFood={item}
+                        handleDelete={handleDelete}
+                        handleConfirm={handleConfirm}
+                      />
                     ))}
-                   </tbody>
+                  </tbody>
                 </table>
+                <p className="text-center my-4">
+                  <Link to={"/all_foods"}>
+                    <BannerBtn>Still Hungry?</BannerBtn>
+                  </Link>
+                </p>
               </div>
             </div>
           </div>

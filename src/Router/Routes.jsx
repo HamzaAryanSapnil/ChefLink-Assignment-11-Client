@@ -63,7 +63,9 @@ const router = createBrowserRouter([
         path: "/food_details/:id",
         element: <PrivateRoute><Food_Details /></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allFoodItems/${params.id}`),
+          fetch(`http://localhost:5000/allFoodItems/${params.id}`, {
+            credentials: "include",
+          }),
       },
       {
         path: "/food_update/:id",

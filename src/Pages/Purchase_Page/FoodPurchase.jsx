@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import {  useLoaderData, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import moment from "moment";
@@ -8,6 +8,7 @@ import { AuthContext } from "../../Auth_Provider/AuthProvider";
 const FoodPurchase = () => {
   const { user } = useContext(AuthContext);
   const data = useLoaderData();
+  const navigete = useNavigate();
   console.log(data);
   const {
     foodName,
@@ -45,6 +46,7 @@ const FoodPurchase = () => {
         console.log(result);
         if (result.insertedId) {
             Swal.fire("Purchased", "Your food has been purchased", "success");
+            navigete("/my_ordered_foods");
         }
       })
       .catch((err) => {
@@ -157,6 +159,7 @@ const FoodPurchase = () => {
                 </button>
               </div>
             </form>
+            
           </div>
         </div>
       </div>

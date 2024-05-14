@@ -4,9 +4,12 @@ import { AuthContext } from "../../Auth_Provider/AuthProvider";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import Swal from "sweetalert2";
 import BannerBtn from "../../Components/Banner_Btn/BannerBtn";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -17,17 +20,10 @@ const AddFood = () => {
   const onSubmit = (data) => {
     console.log(data);
     // send data to server
-    fetch("http://localhost:5000/allFoodItems", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
+    axios.post("http://localhost:5000/allFoodItems", data)
       .then((result) => {
         console.log(result);
-        if (result.acknowledged) {
+        if (result.data.insertedId) {
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -35,9 +31,14 @@ const AddFood = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate("/my_added_foods");
         }
         reset();
+      })
+      .catch((err) => {
+        console.error(err);
       });
+
   };
 
   return (

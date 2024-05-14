@@ -13,13 +13,7 @@ const Food_Details = () => {
     userName,
     foodOrigin,
   } = data;
-  // z-index: 0;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // max-width: 80rem/* 1280px */;
-  // gap: 1rem/* 16px */;
-  // padding: 1rem/* 16px */;
+ 
   return (
     <div className="hero min-h-screen bg-foodDetailsBg p-4">
       <div className="hero-content max-w-full flex-col xl:flex-row ">

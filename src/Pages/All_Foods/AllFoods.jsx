@@ -1,4 +1,5 @@
 
+import axios from "axios";
 import AllFoodsCard from "./AllFoodsCard";
 import { useEffect, useState } from "react";
 
@@ -7,19 +8,15 @@ const AllFoods = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await fetchAllFoodsData();
-      setFoodsData(data);
-      setIsLoading(false);
-    };
-    fetchData();
+    axios
+      .get("http://localhost:5000/allFoodItems", {
+        withCredentials: true,
+      })
+      .then(({ data }) => {
+        setFoodsData(data);
+        setIsLoading(false);
+      });
   }, []);
-
-  const fetchAllFoodsData = async () => {
-    const response = await fetch("http://localhost:5000/allFoodItems");
-    const data = await response.json();
-    return { data };
-  };
 
   return (
     <div className=" bg-gradient-to-r from-allFoodPageBgLeft to-allFoodPageBgRight p-4">
