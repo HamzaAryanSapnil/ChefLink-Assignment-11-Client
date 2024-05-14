@@ -13,22 +13,28 @@ const useAxiosSecure = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.interceptors.response.use( res => {
-            return res;
-        }, error => {
-            if (error.response.status === 401 || error.response.status === 403) {
-                console.log(error.response.status);
-                logOut()
-                    .then(() => {
-                        console.log('Log Out')
-                        navigate('/login')
-                    })
-                    .catch(err => console.log(err));
-                
-            }
-    }
-    )
+      axiosSecure.interceptors.response.use((res) => {
+        return res;
+      }, (error) => {
+        console.log("error tracked in interceptor", error.response);
+        if (error.response.status === 401 || error.response.status === 403) {
+            logOut()
+            .then(() => {
+              console.log("Logout");
+              navigate('/login');
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          
+        }
+      })
+    
+      
     }, [])
+    
+
+    //
     
     return axiosSecure;
 };
