@@ -2,7 +2,6 @@ import {  useEffect, useState } from "react";
 import foodImg from "../../assets/hydrabadi biriyani.jpg";
 import MyOrderedFoodTableRow from "./MyOrderedFoodTableRow";
 import Swal from "sweetalert2";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import BannerBtn from "../../Components/Banner_Btn/BannerBtn";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
