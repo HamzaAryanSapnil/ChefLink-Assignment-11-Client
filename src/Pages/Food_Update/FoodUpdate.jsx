@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import foodImg from "../../assets/hydrabadi biriyani.jpg";
+import foodImg from "../../assets/hydrabadi_biriyani.jpg";
 import Swal from "sweetalert2";
 import BannerBtn from "../../Components/Banner_Btn/BannerBtn";
 import { useLoaderData, useNavigate } from "react-router-dom";

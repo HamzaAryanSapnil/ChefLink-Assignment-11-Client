@@ -1,34 +1,45 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Auth_Provider/AuthProvider";
-import foodImg from "../../assets/hydrabadi biriyani.jpg";
+import foodImg from "../../assets/hydrabadi_biriyani.jpg";
 import MyAddFoodsCard from "./MyAddFoodsCard";
 import Swal from "sweetalert2";
 import axios from "axios";
+import useAxiosSecure from "../../Hooks/Use_Axios_Secure/UseAxiosSecure";
 
 const MyAddedFoods = () => {
   const { user } = useContext(AuthContext);
   const [foodData, setFoodData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [url, setUrl] = useState("");
+  const axiosSecure = useAxiosSecure();
   useEffect(() => {
     if (user?.email) {
       setUrl(
-        `https://assignment-11-server-seven-pi.vercel.app/allFoodItems?email=${user?.email}`
+        `/allFoodItems?email=${user?.email}`
+        // `https://assignment-11-server-seven-pi.vercel.app/allFoodItems?email=${user?.email}`
       );
     }
   }, [user]);
 
   useEffect(() => {
     if (url) {
-      axios
-        .get(url, {
-          withCredentials: true,
-        })
+      axiosSecure
+        .get(url)
         .then((res) => {
           setFoodData(res.data);
           setIsLoading(false);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
+
+      // axios
+      //   .get(url, {
+      //     withCredentials: true,
+      //   })
+      //   .then((res) => {
+      //     setFoodData(res.data);
+      //     setIsLoading(false);
+      //   })
+      //   .catch((err) => console.log(err));
     }
   }, [url]);
 

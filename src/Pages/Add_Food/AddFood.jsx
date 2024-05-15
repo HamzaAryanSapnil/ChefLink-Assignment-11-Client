@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Auth_Provider/AuthProvider";
-import foodImg from "../../assets/hydrabadi biriyani.jpg";
+import foodImg from "../../assets/hydrabadi_biriyani.jpg";
 import Swal from "sweetalert2";
 import BannerBtn from "../../Components/Banner_Btn/BannerBtn";
 import axios from "axios";

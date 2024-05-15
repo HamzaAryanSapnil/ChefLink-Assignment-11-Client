@@ -1,5 +1,5 @@
 import BannerBtnRoundedFull from "../../Components/Banner_Btn/BannerBtnRoundedFull";
-import foodImg from "../../assets/hydrabadi biriyani.jpg";
+import foodImg from "../../assets/hydrabadi_biriyani.jpg";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 const MyAddFoodsCard = ({ item, handleDelete }) => {
@@ -24,10 +24,7 @@ const MyAddFoodsCard = ({ item, handleDelete }) => {
             <BannerBtnRoundedFull>Update</BannerBtnRoundedFull>
           </Link>
           <span onClick={() => handleDelete(_id)}>
-          <BannerBtnRoundedFull>
-            {" "}
-            Delete
-          </BannerBtnRoundedFull>
+            <BannerBtnRoundedFull> Delete</BannerBtnRoundedFull>
           </span>
         </div>
       </div>

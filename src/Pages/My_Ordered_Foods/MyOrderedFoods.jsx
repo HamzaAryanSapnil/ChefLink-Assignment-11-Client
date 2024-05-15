@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import foodImg from "../../assets/hydrabadi biriyani.jpg";
+import foodImg from "../../assets/hydrabadi_biriyani.jpg";
 import MyOrderedFoodTableRow from "./MyOrderedFoodTableRow";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
@@ -18,17 +18,6 @@ const MyOrderedFoods = () => {
       setPurchasedFood(res.data);
       setIsLoading(false);
     });
-    // axios
-    //   .get(url, {
-    //     withCredentials: true,
-    //   })
-    //   .then((res) => {
-    //     setPurchasedFood(res.data);
-    //     setIsLoading(false);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   }, [url, axiosSecure]);
 
   const handleDelete = (_id) => {
