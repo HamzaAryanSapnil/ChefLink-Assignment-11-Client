@@ -92,7 +92,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       unSubscribe();
     };
-  }, []);
+  }, [user?.email, loading]);
 
   const authInfo = {
     user,
