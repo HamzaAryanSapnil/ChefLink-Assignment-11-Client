@@ -79,7 +79,7 @@ const AllFoods = () => {
               all here. Order now and experience the richness of every moment.
             </p>
             {/* carosel */}
-           <Gallery_Page_Banner></Gallery_Page_Banner>
+           <Gallery_Page_Banner pageName="All Foods" ></Gallery_Page_Banner>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  mx-auto justify-items-center justify-center items-center gap-10 my-10">
             {foodsData.map((food) => (

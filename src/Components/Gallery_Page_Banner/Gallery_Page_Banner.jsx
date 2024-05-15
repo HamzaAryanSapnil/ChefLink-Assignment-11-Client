@@ -1,6 +1,7 @@
 import bannerImg from '../../assets/hydrabadi_biriyani.jpg'
 
-const Gallery_Page_Banner = () => {
+import PropTypes from 'prop-types'
+const Gallery_Page_Banner = ({pageName}) => {
     return (
         <div className=" carousel w-full min-h-screen z-0 my-10">
         <div
@@ -19,7 +20,7 @@ const Gallery_Page_Banner = () => {
                 </span>
               </h1>
               <p className=" text-3xl">
-                All Food Page
+                {pageName}
               </p>
            
             </div>
@@ -34,5 +35,9 @@ const Gallery_Page_Banner = () => {
       </div>
     );
 };
+
+Gallery_Page_Banner.propTypes = {
+    pageName: PropTypes.string,
+}
 
 export default Gallery_Page_Banner;
