@@ -86,10 +86,7 @@ const AllFoods = () => {
               <AllFoodsCard key={food._id} food={food}></AllFoodsCard>
             ))}
           </div>
-        </>
-      )}
-
-      <div>
+          <div>
         <div className="flex justify-center items-center gap-2">
           <button onClick={handlePrevBtn}>
             <BannerBtnRoundedFull>Prev</BannerBtnRoundedFull>
@@ -122,6 +119,10 @@ const AllFoods = () => {
           </select>
         </div>
       </div>
+        </>
+      )}
+
+      
     </div>
   );
 };
