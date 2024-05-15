@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const GalleryPageCard = ({ item, galleryImg }) => {
-  console.log(item);
+//   console.log(item);
   const { _id, foodImageUrl, userName, email } = item;
   const [feedback, setFeedback] = useState(null);
   const addToGallery = async () => {
@@ -28,7 +28,7 @@ const GalleryPageCard = ({ item, galleryImg }) => {
       },
     });
     if (formValues) {
-      const [name, email, description, imageUrl] = formValues;
+      const [name, email, imageUrl, description] = formValues;
       const data = {
         name,
         email,
@@ -59,8 +59,9 @@ const GalleryPageCard = ({ item, galleryImg }) => {
   // now get the users feedback from server
   useEffect(() => {
     axios
-      .get(`https://assignment-11-server-seven-pi.vercel.app/feedback/${_id}`)
+      .get(`https://assignment-11-server-seven-pi.vercel.app/usersFeedback/${_id}`)
       .then((data) => {
+        console.log(data);
         if (data.data.length > 0) {
           console.log(data.data);
           setFeedback(data.data[0]);
@@ -70,6 +71,7 @@ const GalleryPageCard = ({ item, galleryImg }) => {
         console.error(err);
       });
   }, [_id]);
+  console.log(feedback);
   return (
     <div
       className="card bg-base-100 shadow-xl hover:shadow-2xl 
@@ -90,7 +92,7 @@ const GalleryPageCard = ({ item, galleryImg }) => {
         <h2 className="card-title">{userName}</h2>
         {feedback ? <p>{feedback.description}</p> : <p>No feedback yet</p>}
         <div className="card-actions">
-          <button className="btn btn-primary" onClick={addToGallery}>
+          <button className="btn btn-outline text-bannerBtnBg " onClick={addToGallery}>
             Add
           </button>
         </div>

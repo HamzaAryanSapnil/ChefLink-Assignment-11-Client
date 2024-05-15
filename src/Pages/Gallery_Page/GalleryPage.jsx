@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
 import Gallery_Page_Banner from "../../Components/Gallery_Page_Banner/Gallery_Page_Banner";
-import axios from "axios";
 import GalleryPageCard from "./GalleryPageCard";
 import galleryImg from '../../assets/hydrabadi_biriyani.jpg'
+import useAxiosSecure from "../../Hooks/Use_Axios_Secure/UseAxiosSecure";
 
 const GalleryPage = () => {
   // get data from server with axios for gallery page
   const [galleryData, setGalleryData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  
+  const axiosSecure = useAxiosSecure();
+  const url = "/allFoodItems"
   useEffect(() => {
-    axios
-      .get(
-        `https://assignment-11-server-seven-pi.vercel.app/allFoodItems`,
-        
-      )
-      .then((data) => {
-        setGalleryData(data.data);
+    axiosSecure.get(url).then((res) => {
+        setGalleryData(res.data);
         setIsLoading(false);
-      }).catch((err) => console.error(err));
-  }, []);
+      });
+   
+  }, [axiosSecure]);
+  
+
 
   return (
     <div className="p-2 xl:p-0 bg-allFoodPageBgLeft">

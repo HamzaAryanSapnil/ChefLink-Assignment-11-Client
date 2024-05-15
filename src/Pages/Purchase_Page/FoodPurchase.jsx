@@ -11,14 +11,14 @@ const FoodPurchase = () => {
   const data = useLoaderData();
   const navigete = useNavigate();
   console.log(data);
-  const { foodName, price, foodImageUrl, quantity } = data;
+  const { foodName, price, foodImageUrl, quantity, email } = data;
   // fetch(`https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${params.id}`)
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, watch, setValue } = useForm({
     defaultValues: {
       foodImageUrl,
       foodName,
       price,
-      quantity,
+      quantity: 1,
       userName: user?.displayName,
       email: user?.email,
       buyingDate: moment().format("YYYY-MM-DD"),
@@ -27,6 +27,10 @@ const FoodPurchase = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    if (user?.email === email) {
+      Swal.fire("Error", "You cannot purchase your own food item", "error");
+      return;
+    }
     // send data to server in purchase collection and after sending data to server use sweet alert to show success
     axios
       .post(
@@ -46,6 +50,11 @@ const FoodPurchase = () => {
       });
   };
 
+  const watchQuantity = watch("quantity");
+  if (watchQuantity > quantity) {
+    setValue("quantity", quantity);
+  }
+
   return (
     <div className="p-4">
       <h1 className="text-3xl font-bold text-center my-10 ">
@@ -63,6 +72,16 @@ const FoodPurchase = () => {
               onSubmit={handleSubmit(onSubmit)}
               className="card-body grid grid-cols-1 md:grid-cols-2"
             >
+              {quantity === 0 && (
+                <div className="md:col-span-2 text-red-500 text-center">
+                  This item is not available for purchase as it is out of stock.
+                </div>
+              )}
+              {user?.email === email && (
+                <div className="md:col-span-2 text-red-500 text-center">
+                  You cannot purchase your own food item.
+                </div>
+              )}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Food Img Url</span>
@@ -105,9 +124,16 @@ const FoodPurchase = () => {
                 <input
                   type="number"
                   placeholder="quantity"
-                  {...register("quantity")}
+                  {...register("quantity", { min: 1, max: quantity })}
                   className="input input-bordered"
+                  disabled={quantity === 0}
                 />
+                {watchQuantity > quantity && (
+                  <p className="text-red-500 text-sm">
+                    You cannot buy more than the available quantity ({quantity}
+                    )
+                  </p>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -145,7 +171,9 @@ const FoodPurchase = () => {
                 />
               </div>
               <div className="form-control mt-6 md:col-span-2  w-full">
-                <button className="btn bg-bannerBtnBg text-white btn-block">
+                <button
+                disabled={quantity === 0 || user?.email === email}
+                className="btn bg-bannerBtnBg text-white btn-block">
                   Purchase
                 </button>
               </div>
