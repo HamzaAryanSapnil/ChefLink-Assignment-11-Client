@@ -11,8 +11,12 @@ const TopFoodsSection = () => {
 
   useEffect(() => {
     axios
-      .get("https://assignment-11-server-seven-pi.vercel.app/allFoodItems")
-      .then((res) => setTopFoods(res.data));
+      // .get("https://assignment-11-server-seven-pi.vercel.app/allFoodItems")
+      .get(
+        "https://assignment-11-server-seven-pi.vercel.app/allFoodItems?sort=purchaseCount&order=desc&limit=6"
+      )
+      .then((res) => setTopFoods(res.data))
+      .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -29,7 +33,7 @@ const TopFoodsSection = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 container mx-auto justify-items-center justify-center items-center gap-10">
-        {topFoods.slice(0, 6).map((topFood) => (
+        {topFoods.map((topFood) => (
           <Top_Foods_Cards
             key={topFood._id}
             topFood={topFood}

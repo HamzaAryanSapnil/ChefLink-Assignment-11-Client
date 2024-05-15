@@ -31,11 +31,13 @@ const FoodPurchase = () => {
       Swal.fire("Error", "You cannot purchase your own food item", "error");
       return;
     }
+
+    const purchaseData = { ...data, foodId: data._id };
     // send data to server in purchase collection and after sending data to server use sweet alert to show success
     axios
       .post(
         "https://assignment-11-server-seven-pi.vercel.app/purchasedFood",
-        data
+        purchaseData
       )
       .then((result) => {
         console.log(result);
