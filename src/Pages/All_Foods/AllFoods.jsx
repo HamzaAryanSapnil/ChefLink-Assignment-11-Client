@@ -1,22 +1,63 @@
 import axios from "axios";
 import AllFoodsCard from "./AllFoodsCard";
 import { useEffect, useState } from "react";
+import BannerBtnRoundedFull from "../../Components/Banner_Btn/BannerBtnRoundedFull";
 
 const AllFoods = () => {
   const [foodsData, setFoodsData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [totalCount, setTotalCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [foodItemsPerPage, setFoodItemsPerPage] = useState(6);
+  const { count } = totalCount;
+  const numberOfPages = Math.ceil(count / foodItemsPerPage);
+
+  const pages = [];
+  for (let i = 0; i < numberOfPages; i++) {
+    pages.push(i);
+  }
+  // const page = [...Array(numberOfPages).keys()];
+  // console.log(page);
+  console.log(pages);
 
   useEffect(() => {
     axios
-      .get("https://assignment-11-server-seven-pi.vercel.app/allFoodItems", {
-        withCredentials: true,
-      })
+      .get(
+        `https://assignment-11-server-seven-pi.vercel.app/allFoodItems?page=${currentPage}&size=${foodItemsPerPage}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then(({ data }) => {
         setFoodsData(data);
         setIsLoading(false);
       });
+  }, [currentPage, foodItemsPerPage]);
+  useEffect(() => {
+    axios
+      .get("https://assignment-11-server-seven-pi.vercel.app/allFoodItemsCount")
+      .then((res) => {
+        console.log(res);
+        setTotalCount(res.data);
+      });
   }, []);
 
+  const handleFoodItemsPerChange = (e) => {
+    const val = parseInt(e.target.value);
+    setFoodItemsPerPage(val);
+    setCurrentPage(0);
+  };
+
+  const handlePrevBtn = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const handleNextBtn = () => {
+    if (currentPage < numberOfPages - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
   return (
     <div className=" bg-gradient-to-r from-allFoodPageBgLeft to-allFoodPageBgRight p-4">
       {isLoading ? (
@@ -44,6 +85,40 @@ const AllFoods = () => {
           </div>
         </>
       )}
+
+      <div>
+        <div className="flex justify-center items-center gap-2">
+          <button onClick={handlePrevBtn}>
+            <BannerBtnRoundedFull>Prev</BannerBtnRoundedFull>
+          </button>
+          {pages.map((page) => (
+            <button
+              onClick={() => setCurrentPage(page)}
+              key={page}
+              className={
+                currentPage === page
+                  ? "btn bg-bannerBtnBg text-white"
+                  : "btn btn-outline text-bannerBtnBg"
+              }
+            >
+              {page}
+            </button>
+          ))}
+          <button onClick={handleNextBtn}>
+            <BannerBtnRoundedFull>Next</BannerBtnRoundedFull>
+          </button>
+          <select
+            value={foodItemsPerPage}
+            onChange={handleFoodItemsPerChange}
+            name=""
+            id=""
+          >
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="9">9</option>
+          </select>
+        </div>
+      </div>
     </div>
   );
 };
