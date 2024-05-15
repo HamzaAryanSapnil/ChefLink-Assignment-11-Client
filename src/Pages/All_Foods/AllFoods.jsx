@@ -67,15 +67,15 @@ const AllFoods = () => {
       ) : (
         <>
           <div className="my-10">
-            <h1 className="text-5xl font-bold text-center">
-              {" "}
-              Order your favourite food{" "}
+            <h1 className="text-3xl md:text-5xl font-bold text-center">
+              Discover the Taste of Every Moment{" "}
             </h1>
-            <p className="text-center w-1/2 mx-auto my-4">
-              Welcome to ChefLink - Where Every Bite Tells a Story! Explore our
-              tantalizing menu featuring a delightful array of culinary
-              creations. From savory starters to decadent desserts, embark on a
-              journey of flavor with us.
+            <p className="text-center md:w-1/2 mx-auto my-4">
+              Welcome to ChefLink, where every bite is a culinary masterpiece!
+              Explore our extensive menu of mouthwatering dishes that transport
+              you to a world of flavors and aromas. Whether you&apos;re in the mood
+              for a hearty comfort food or a sweet indulgence, we have it all
+              here. Order now and experience the richness of every moment.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  mx-auto justify-items-center justify-center items-center gap-10 my-10">
