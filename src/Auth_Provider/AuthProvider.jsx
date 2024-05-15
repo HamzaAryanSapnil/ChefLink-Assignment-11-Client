@@ -62,7 +62,6 @@ const AuthProvider = ({ children }) => {
       const userEmail = currentUser?.email || user?.email;
       const loggedUser = { email: userEmail };
       setUser(currentUser);
-      console.log(currentUser);
       setLoading(false);
       // if user exist then issue a token
 
@@ -73,8 +72,7 @@ const AuthProvider = ({ children }) => {
             loggedUser,
             { withCredentials: true }
           )
-          .then((res) => {
-            console.log("token response: ", res.data);
+          .then(() => {
           });
       } else {
         axios
@@ -83,8 +81,7 @@ const AuthProvider = ({ children }) => {
             loggedUser,
             { withCredentials: true }
           )
-          .then((res) => {
-            console.log("token response after logout: ", res.data);
+          .then(() => {
           });
       }
     });
