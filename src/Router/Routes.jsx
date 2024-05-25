@@ -31,7 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/food_gallery",
-        element: <PrivateRoute><GalleryPage/></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <GalleryPage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/food_purchase/:id",
@@ -41,9 +45,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${params.id}`
-          ),
+          fetch(`http://localhost:5000/allFoodItems/${params.id}`),
       },
 
       {
@@ -86,12 +88,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${params.id}`,
-            {
-              credentials: "include",
-            }
-          ),
+          fetch(`http://localhost:5000/allFoodItems/${params.id}`, {
+            credentials: "include",
+          }),
       },
       {
         path: "/food_update/:id",
@@ -101,9 +100,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${params.id}`
-          ),
+          fetch(`http://localhost:5000/allFoodItems/${params.id}`),
       },
     ],
   },

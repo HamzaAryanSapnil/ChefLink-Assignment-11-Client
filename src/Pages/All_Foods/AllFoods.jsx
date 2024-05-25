@@ -24,7 +24,7 @@ const AllFoods = () => {
   useEffect(() => {
     axios
       .get(
-        `https://assignment-11-server-seven-pi.vercel.app/allFoodItems?page=${currentPage}&size=${foodItemsPerPage}`,
+        `http://localhost:5000/allFoodItems?page=${currentPage}&size=${foodItemsPerPage}`,
         {
           withCredentials: true,
         }
@@ -35,12 +35,10 @@ const AllFoods = () => {
       });
   }, [currentPage, foodItemsPerPage]);
   useEffect(() => {
-    axios
-      .get("https://assignment-11-server-seven-pi.vercel.app/allFoodItemsCount")
-      .then((res) => {
-        console.log(res);
-        setTotalCount(res.data);
-      });
+    axios.get("http://localhost:5000/allFoodItemsCount").then((res) => {
+      console.log(res);
+      setTotalCount(res.data);
+    });
   }, []);
 
   const handleFoodItemsPerChange = (e) => {
@@ -79,7 +77,7 @@ const AllFoods = () => {
               all here. Order now and experience the richness of every moment.
             </p>
             {/* carosel */}
-           <Gallery_Page_Banner pageName="All Foods" ></Gallery_Page_Banner>
+            <Gallery_Page_Banner pageName="All Foods"></Gallery_Page_Banner>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  mx-auto justify-items-center justify-center items-center gap-10 my-10">
             {foodsData.map((food) => (
@@ -87,42 +85,40 @@ const AllFoods = () => {
             ))}
           </div>
           <div>
-        <div className="flex justify-center items-center gap-2">
-          <button onClick={handlePrevBtn}>
-            <BannerBtnRoundedFull>Prev</BannerBtnRoundedFull>
-          </button>
-          {pages.map((page) => (
-            <button
-              onClick={() => setCurrentPage(page)}
-              key={page}
-              className={
-                currentPage === page
-                  ? "btn bg-bannerBtnBg text-white"
-                  : "btn btn-outline text-bannerBtnBg"
-              }
-            >
-              {page}
-            </button>
-          ))}
-          <button onClick={handleNextBtn}>
-            <BannerBtnRoundedFull>Next</BannerBtnRoundedFull>
-          </button>
-          <select
-            value={foodItemsPerPage}
-            onChange={handleFoodItemsPerChange}
-            name=""
-            id=""
-          >
-            <option value="3">3</option>
-            <option value="6">6</option>
-            <option value="9">9</option>
-          </select>
-        </div>
-      </div>
+            <div className="flex justify-center items-center gap-2">
+              <button onClick={handlePrevBtn}>
+                <BannerBtnRoundedFull>Prev</BannerBtnRoundedFull>
+              </button>
+              {pages.map((page) => (
+                <button
+                  onClick={() => setCurrentPage(page)}
+                  key={page}
+                  className={
+                    currentPage === page
+                      ? "btn bg-bannerBtnBg text-white"
+                      : "btn btn-outline text-bannerBtnBg"
+                  }
+                >
+                  {page}
+                </button>
+              ))}
+              <button onClick={handleNextBtn}>
+                <BannerBtnRoundedFull>Next</BannerBtnRoundedFull>
+              </button>
+              <select
+                value={foodItemsPerPage}
+                onChange={handleFoodItemsPerChange}
+                name=""
+                id=""
+              >
+                <option value="3">3</option>
+                <option value="6">6</option>
+                <option value="9">9</option>
+              </select>
+            </div>
+          </div>
         </>
       )}
-
-      
     </div>
   );
 };

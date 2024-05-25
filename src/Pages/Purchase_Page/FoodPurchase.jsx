@@ -12,7 +12,7 @@ const FoodPurchase = () => {
   const navigete = useNavigate();
   console.log(data);
   const { foodName, price, foodImageUrl, quantity, email } = data;
-  // fetch(`https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${params.id}`)
+  // fetch(`http://localhost:5000/allFoodItems/${params.id}`)
   const { register, handleSubmit, watch, setValue } = useForm({
     defaultValues: {
       foodImageUrl,
@@ -35,10 +35,7 @@ const FoodPurchase = () => {
     const purchaseData = { ...data, foodId: data._id };
     // send data to server in purchase collection and after sending data to server use sweet alert to show success
     axios
-      .post(
-        "https://assignment-11-server-seven-pi.vercel.app/purchasedFood",
-        purchaseData
-      )
+      .post("http://localhost:5000/purchasedFood", purchaseData)
       .then((result) => {
         console.log(result);
         if (result.data.insertedId) {
@@ -132,8 +129,7 @@ const FoodPurchase = () => {
                 />
                 {watchQuantity > quantity && (
                   <p className="text-red-500 text-sm">
-                    You cannot buy more than the available quantity ({quantity}
-                    )
+                    You cannot buy more than the available quantity ({quantity})
                   </p>
                 )}
               </div>
@@ -174,8 +170,9 @@ const FoodPurchase = () => {
               </div>
               <div className="form-control mt-6 md:col-span-2  w-full">
                 <button
-                disabled={quantity === 0 || user?.email === email}
-                className="btn bg-bannerBtnBg text-white btn-block">
+                  disabled={quantity === 0 || user?.email === email}
+                  className="btn bg-bannerBtnBg text-white btn-block"
+                >
                   Purchase
                 </button>
               </div>

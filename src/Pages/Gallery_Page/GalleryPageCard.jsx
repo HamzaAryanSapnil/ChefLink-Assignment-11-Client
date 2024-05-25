@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const GalleryPageCard = ({ item, galleryImg }) => {
-//   console.log(item);
+  //   console.log(item);
   const { _id, foodImageUrl, userName, email } = item;
   const [feedback, setFeedback] = useState(null);
   const addToGallery = async () => {
@@ -39,10 +39,7 @@ const GalleryPageCard = ({ item, galleryImg }) => {
       };
       console.log(data);
       axios
-        .post(
-          `https://assignment-11-server-seven-pi.vercel.app/addToGallery`,
-          data
-        )
+        .post(`http://localhost:5000/addToGallery`, data)
         .then((data) => {
           if (data.data.insertedId) {
             console.log(data.data.insertedId);
@@ -59,7 +56,7 @@ const GalleryPageCard = ({ item, galleryImg }) => {
   // now get the users feedback from server
   useEffect(() => {
     axios
-      .get(`https://assignment-11-server-seven-pi.vercel.app/usersFeedback/${_id}`)
+      .get(`http://localhost:5000/usersFeedback/${_id}`)
       .then((data) => {
         console.log(data);
         if (data.data.length > 0) {
@@ -92,7 +89,10 @@ const GalleryPageCard = ({ item, galleryImg }) => {
         <h2 className="card-title">{userName}</h2>
         {feedback ? <p>{feedback.description}</p> : <p>No feedback yet</p>}
         <div className="card-actions">
-          <button className="btn btn-outline text-bannerBtnBg " onClick={addToGallery}>
+          <button
+            className="btn btn-outline text-bannerBtnBg "
+            onClick={addToGallery}
+          >
             Add
           </button>
         </div>

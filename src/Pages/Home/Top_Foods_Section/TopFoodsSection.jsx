@@ -8,12 +8,12 @@ const TopFoodsSection = () => {
   // get data from all food
 
   const [topFoods, setTopFoods] = useState([]);
-
+  // http://localhost:5000/
   useEffect(() => {
     axios
-      // .get("https://assignment-11-server-seven-pi.vercel.app/allFoodItems")
+      // .get("http://localhost:5000/allFoodItems")
       .get(
-        "https://assignment-11-server-seven-pi.vercel.app/allFoodItems?sort=purchaseCount&order=desc&limit=6"
+        "http://localhost:5000/allFoodItems?sort=purchaseCount&order=desc&limit=6"
       )
       .then((res) => setTopFoods(res.data))
       .catch((err) => console.error(err));
