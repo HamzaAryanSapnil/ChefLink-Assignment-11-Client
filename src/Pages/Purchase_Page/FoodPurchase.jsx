@@ -10,8 +10,9 @@ const FoodPurchase = () => {
   const { user } = useContext(AuthContext);
   const data = useLoaderData();
   const navigete = useNavigate();
-  console.log(data);
-  const { foodName, price, foodImageUrl, quantity, email } = data;
+  // console.log(data);
+  const { foodName, price, foodImageUrl, quantity, email, _id } = data;
+  console.log(_id);
   // fetch(`http://localhost:5000/allFoodItems/${params.id}`)
   const { register, handleSubmit, watch, setValue } = useForm({
     defaultValues: {
@@ -32,7 +33,7 @@ const FoodPurchase = () => {
       return;
     }
 
-    const purchaseData = { ...data, foodId: data._id };
+    const purchaseData = { ...data, foodId: _id};
     // send data to server in purchase collection and after sending data to server use sweet alert to show success
     axios
       .post("http://localhost:5000/purchasedFood", purchaseData)
