@@ -39,7 +39,10 @@ const GalleryPageCard = ({ item, galleryImg }) => {
       };
       console.log(data);
       axios
-        .post(`http://localhost:5000/addToGallery`, data)
+        .post(
+          `https://assignment-11-server-seven-pi.vercel.app/addToGallery`,
+          data
+        )
         .then((data) => {
           if (data.data.insertedId) {
             console.log(data.data.insertedId);
@@ -56,7 +59,9 @@ const GalleryPageCard = ({ item, galleryImg }) => {
   // now get the users feedback from server
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/usersFeedback/${_id}`)
+      .get(
+        `https://assignment-11-server-seven-pi.vercel.app/usersFeedback/${_id}`
+      )
       .then((data) => {
         console.log(data);
         if (data.data.length > 0) {

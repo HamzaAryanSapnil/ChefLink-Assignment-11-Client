@@ -43,12 +43,16 @@ const FoodUpdate = () => {
     const formValues = getValues();
     console.log(formValues);
     axios
-      .put(`http://localhost:5000/allFoodItems/${_id}`, formValues, {
-        headers: {
-          "content-type": "application/json",
-        },
-        withCredentials: true,
-      })
+      .put(
+        `https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${_id}`,
+        formValues,
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           Swal.fire("Updated", "Your food has been updated", "success");

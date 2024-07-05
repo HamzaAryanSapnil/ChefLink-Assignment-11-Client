@@ -25,7 +25,7 @@ const Login = () => {
         // get jwt token
         const user = { email };
         axios
-          .post("http://localhost:5000/jwt", user, {
+          .post("https://assignment-11-server-seven-pi.vercel.app/jwt", user, {
             withCredentials: true,
           })
           .then((data) => {
@@ -65,7 +65,10 @@ const Login = () => {
           <img alt="" />
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="card-body"
+          >
             <h1 className="text-4xl font-bold text-center text-dark2 ">
               Login
             </h1>
@@ -135,7 +138,10 @@ const Login = () => {
                 <p className="text-red-500">{errors.password.message}</p>
               )}
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <a
+                  href="#"
+                  className="label-text-alt link link-hover"
+                >
                   Forgot password?
                 </a>
               </label>
@@ -152,7 +158,11 @@ const Login = () => {
                 className="btn btn-circle bg-transparent border-none"
               >
                 <i>
-                  <img src={googleIcon} className="w-10 h-10" alt="" />
+                  <img
+                    src={googleIcon}
+                    className="w-10 h-10"
+                    alt=""
+                  />
                 </i>
               </button>
 
@@ -161,14 +171,20 @@ const Login = () => {
                 className="btn btn-circle bg-transparent border-none"
               >
                 <i>
-                  <img src={githubIcon} alt="" />
+                  <img
+                    src={githubIcon}
+                    alt=""
+                  />
                 </i>
               </button>
             </div>
           </div>
           <p className=" my-4 text-center">
             New to car doctor ?{" "}
-            <Link to="/signup" className="text-appointBtnColor font-medium">
+            <Link
+              to="/signup"
+              className="text-appointBtnColor font-medium"
+            >
               Sign_Up
             </Link>{" "}
           </p>

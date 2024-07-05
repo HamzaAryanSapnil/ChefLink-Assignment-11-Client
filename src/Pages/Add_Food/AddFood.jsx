@@ -21,7 +21,10 @@ const AddFood = () => {
     console.log(data);
     // send data to server
     axios
-      .post("http://localhost:5000/allFoodItems", data)
+      .post(
+        "https://assignment-11-server-seven-pi.vercel.app/allFoodItems",
+        data
+      )
       .then((result) => {
         console.log(result);
         if (result.data.insertedId) {
@@ -49,7 +52,10 @@ const AddFood = () => {
         </h1>
       </div>
       <div className="flex flex-col xl:flex-row-reverse w-full gap-4 justify-around items-center ">
-        <img src={foodImg} className="md:max-w-md rounded-lg shadow-2xl " />
+        <img
+          src={foodImg}
+          className="md:max-w-md rounded-lg shadow-2xl "
+        />
 
         <div className="card shrink-0 w-full max-w-5xl  shadow-2xl bg-base-100">
           <form

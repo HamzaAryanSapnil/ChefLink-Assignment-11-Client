@@ -5,6 +5,9 @@ import BannerBtnRoundedFull from "../../Components/Banner_Btn/BannerBtnRoundedFu
 import Gallery_Page_Banner from "../../Components/Gallery_Page_Banner/Gallery_Page_Banner";
 
 const AllFoods = () => {
+  const [asc, setAsc] = useState(true);
+  const [min, setMin] = useState(undefined);
+  const [max, setMax] = useState(undefined);
   const [foodsData, setFoodsData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [totalCount, setTotalCount] = useState(0);
@@ -24,7 +27,9 @@ const AllFoods = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/allFoodItems?page=${currentPage}&size=${foodItemsPerPage}`,
+        `https://assignment-11-server-seven-pi.vercel.app/allFoodItems?page=${currentPage}&size=${foodItemsPerPage}&sort=${
+          asc ? "asc" : "desc"
+        }&min=${min}&max=${max}`,
         {
           withCredentials: true,
         }
@@ -33,12 +38,14 @@ const AllFoods = () => {
         setFoodsData(data);
         setIsLoading(false);
       });
-  }, [currentPage, foodItemsPerPage]);
+  }, [currentPage, foodItemsPerPage, asc, min, max]);
   useEffect(() => {
-    axios.get("http://localhost:5000/allFoodItemsCount").then((res) => {
-      console.log(res);
-      setTotalCount(res.data);
-    });
+    axios
+      .get("https://assignment-11-server-seven-pi.vercel.app/allFoodItemsCount")
+      .then((res) => {
+        console.log(res);
+        setTotalCount(res.data);
+      });
   }, []);
 
   const handleFoodItemsPerChange = (e) => {
@@ -79,42 +86,75 @@ const AllFoods = () => {
             {/* carosel */}
             <Gallery_Page_Banner pageName="All Foods"></Gallery_Page_Banner>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  mx-auto justify-items-center justify-center items-center gap-10 my-10">
-            {foodsData.map((food) => (
-              <AllFoodsCard key={food._id} food={food}></AllFoodsCard>
-            ))}
-          </div>
-          <div>
-            <div className="flex justify-center items-center gap-2">
-              <button onClick={handlePrevBtn}>
-                <BannerBtnRoundedFull>Prev</BannerBtnRoundedFull>
-              </button>
-              {pages.map((page) => (
+
+          {/* main items */}
+          <div className="flex justify-center flex-1 bg-yellow-200 gap-10 ">
+            {/* navbar */}
+            <div className="bg-[#fbf9f0] w-1/4">
+              <h1 className="flex justify-center text-3xl font-bold">Filter</h1>
+              <div className="flex flex-col justify-center items-center gap-4 ">
                 <button
-                  onClick={() => setCurrentPage(page)}
-                  key={page}
-                  className={
-                    currentPage === page
-                      ? "btn bg-bannerBtnBg text-white"
-                      : "btn btn-outline text-bannerBtnBg"
-                  }
+                  onClick={() => setAsc(!asc)}
+                  className="btn btn-outline text-bannerBtnBg my-10"
                 >
-                  {page}
+                  {asc ? "Price High To Low" : "Price Low To high"}
                 </button>
-              ))}
-              <button onClick={handleNextBtn}>
-                <BannerBtnRoundedFull>Next</BannerBtnRoundedFull>
-              </button>
-              <select
-                value={foodItemsPerPage}
-                onChange={handleFoodItemsPerChange}
-                name=""
-                id=""
-              >
-                <option value="3">3</option>
-                <option value="6">6</option>
-                <option value="9">9</option>
-              </select>
+
+                <button
+                  onClick={() => {
+                    setMin(20);
+                    setMax(200);
+                  }}
+                  className="btn btn-outline text-bannerBtnBg"
+                >
+                  Price: 20tk to 200tk
+                </button>
+              </div>
+            </div>
+
+            {/* food cards */}
+            <div className="bg-red-300 flex-1">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  mx-auto justify-items-center justify-center items-center gap-10 my-10  ">
+                {foodsData.map((food) => (
+                  <AllFoodsCard
+                    key={food._id}
+                    food={food}
+                  ></AllFoodsCard>
+                ))}
+              </div>
+              <div>
+                <div className="flex justify-center items-center gap-2">
+                  <button onClick={handlePrevBtn}>
+                    <BannerBtnRoundedFull>Prev</BannerBtnRoundedFull>
+                  </button>
+                  {pages.map((page) => (
+                    <button
+                      onClick={() => setCurrentPage(page)}
+                      key={page}
+                      className={
+                        currentPage === page
+                          ? "btn bg-bannerBtnBg text-white"
+                          : "btn btn-outline text-bannerBtnBg"
+                      }
+                    >
+                      {page}
+                    </button>
+                  ))}
+                  <button onClick={handleNextBtn}>
+                    <BannerBtnRoundedFull>Next</BannerBtnRoundedFull>
+                  </button>
+                  <select
+                    value={foodItemsPerPage}
+                    onChange={handleFoodItemsPerChange}
+                    name=""
+                    id=""
+                  >
+                    <option value="3">3</option>
+                    <option value="6">6</option>
+                    <option value="9">9</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </>
