@@ -9,10 +9,10 @@ import AuthProvider from "./Auth_Provider/AuthProvider.jsx";
 // axios default credentials
 // Axios.defaults.withCredentials = true;
 
-
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AuthProvider>
-    <RouterProvider router={router} />
-  </AuthProvider>
-);
 
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+
+);

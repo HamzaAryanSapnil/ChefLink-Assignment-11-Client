@@ -16,7 +16,10 @@ export default {
         PastelYellow: "#FFFACD",
         PastelPink: "#FFDAB9",
         PastelLavender: "#E6E6FA",
-      }
+      },
+      fontFamily: {
+        lato: ['Lato', 'sans-serif'],
+      },
     },
   },
   plugins: [

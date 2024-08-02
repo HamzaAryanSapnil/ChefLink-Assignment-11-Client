@@ -43,25 +43,20 @@ const FoodUpdate = () => {
     const formValues = getValues();
     console.log(formValues);
     axios
-      .put(
-        `https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${_id}`,
-        formValues,
-        {
-          headers: {
-            "content-type": "application/json",
-          },
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
+      .put(`http://localhost:5000/allFoodItems/${_id}`, formValues, {
+        headers: {
+          "content-type": "application/json",
+        },
+        withCredentials: true,
+      }).then((res) => {
+        console.log("Response:", res);
         if (res.data.modifiedCount > 0) {
           Swal.fire("Updated", "Your food has been updated", "success");
           navigate("/my_added_foods");
         } else {
-          Swal.fire("Error", "Error updating food", "error");
+          Swal.fire("No Change", "No updates were made", "info");
         }
-      })
-      .catch((err) => {
+      }).catch((err) => {
         console.log(err);
         Swal.fire("Error", err.message, "error");
       });

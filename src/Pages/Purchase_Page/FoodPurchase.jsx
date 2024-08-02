@@ -13,7 +13,7 @@ const FoodPurchase = () => {
   // console.log(data);
   const { foodName, price, foodImageUrl, quantity, email, _id } = data;
   console.log(_id);
-  // fetch(`https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${params.id}`)
+  // fetch(`http://localhost:5000/allFoodItems/${params.id}`)
   const { register, handleSubmit, watch, setValue } = useForm({
     defaultValues: {
       foodImageUrl,
@@ -36,10 +36,7 @@ const FoodPurchase = () => {
     const purchaseData = { ...data, foodId: _id };
     // send data to server in purchase collection and after sending data to server use sweet alert to show success
     axios
-      .post(
-        "https://assignment-11-server-seven-pi.vercel.app/purchasedFood",
-        purchaseData
-      )
+      .post("http://localhost:5000/purchasedFood", purchaseData)
       .then((result) => {
         console.log(result);
         if (result.data.insertedId) {

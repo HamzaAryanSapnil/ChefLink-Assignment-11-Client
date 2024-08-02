@@ -67,23 +67,17 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         axios
-          .post(
-            "https://assignment-11-server-seven-pi.vercel.app/jwt",
-            loggedUser,
-            {
-              withCredentials: true,
-            }
-          )
-          .then(() => {});
+          .post("http://localhost:5000/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log("token issued", res.data);
+          });
       } else {
         axios
-          .post(
-            "https://assignment-11-server-seven-pi.vercel.app/logOut",
-            loggedUser,
-            {
-              withCredentials: true,
-            }
-          )
+          .post("http://localhost:5000/logOut", loggedUser, {
+            withCredentials: true,
+          })
           .then(() => {});
       }
     });
