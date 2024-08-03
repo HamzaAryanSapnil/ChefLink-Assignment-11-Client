@@ -1,25 +1,22 @@
 import { Link } from "react-router-dom";
 const Videosection = () => {
   return (
-    <div className="my-10 flex flex-col lg:flex-row justify-around items-center gap-5 p-4">
-      <div className="flex-1">
-        <div className="card  bg-base-100 shadow-xl">
+    <div className="my-10 flex flex-col lg:flex-row justify-around items-center gap-5 p-4 container mx-auto">
+      <div className="flex-1  w-full ">
+        <div className="card  w-full bg-base-100 shadow-xl">
           <div className="card-body">
             <h2 className="card-title text-4xl font-bold text-descolor font-cabin">
-              Craftsmanship Unveiled: Explore Our Artisanal Crafts
+              Savor the Flavors: Discover Our Culinary Creations
             </h2>
             <p className="font-mulish text-cardDescolor">
-              Dive deeper into the world of artisanal mastery with our
-              captivating video section. Immerse yourself in the enchanting
-              process of crafting exquisite jute and wooden treasures, where
-              every creation is a testament to skill, passion, and tradition.
-              Click the button below to embark on a visual journey through our
-              workshop, witnessing the intricate techniques and heartfelt
-              dedication that bring each piece to life. Prepare to be inspired
-              as you discover the artistry behind every stitch, weave, and
-              carve. Let the magic of craftsmanship unfold before your eyes,
-              guiding you to our comprehensive craft list page where you can
-              explore and acquire your own piece of artisanal beauty.
+              Dive into a world of exquisite dining with our diverse menu
+              options. Explore our culinary delights, where each dish is crafted
+              with passion and precision. Whether you&apos;re craving a gourmet
+              meal or a quick bite, our offerings are designed to tantalize your
+              taste buds and satisfy your cravings. Click the button below to
+              browse our full menu and find your next favorite dish. Let us take
+              you on a gastronomic journey that celebrates the art of fine
+              dining and exceptional service.
             </p>
             <div className="card-actions justify-start">
               <Link to={"/allArtAndCraftItems"}>
@@ -32,13 +29,14 @@ const Videosection = () => {
           </div>
         </div>
       </div>
-      <div className="flex-1">
-        <div className="card h-[450px] bg-base-100 shadow-xl ">
-          <div className="card-body">
+      <div className="flex-1 w-full">
+        <div className="card w-full bg-base-100 shadow-xl ">
+          <div className="card-body w-full">
             <div className="w-full h-full object-cover">
               <iframe
-                width="560"
-                height="315"
+                className="w-full h-full lg:h-[450px] xl:h-[350px] object-cover "
+                // width="560"
+                // height="315"
                 src="https://www.youtube.com/embed/kRCH8kD1GD0?si=0zrQ7U2HKyaYP7K4"
                 title="YouTube video player"
                 frameborder="0"

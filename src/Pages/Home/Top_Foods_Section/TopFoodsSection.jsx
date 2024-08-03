@@ -12,9 +12,7 @@ const TopFoodsSection = () => {
   useEffect(() => {
     axios
       // .get("http://localhost:5000/allFoodItems")
-      .get(
-        "http://localhost:5000/allFoodItems?sort=purchaseCount&order=desc&limit=6"
-      )
+      .get("http://localhost:5000/topFood")
       .then((res) => setTopFoods(res.data))
       .catch((err) => console.error(err));
   }, []);

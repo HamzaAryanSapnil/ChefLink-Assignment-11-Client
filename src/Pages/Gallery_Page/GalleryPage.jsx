@@ -122,6 +122,7 @@ const GalleryPage = () => {
              console.log(data.data.insertedId);
              Swal.fire("Thank you for your contribution!");
            }
+           
          })
          .catch((err) => {
            console.error(err);
@@ -156,6 +157,10 @@ const GalleryPage = () => {
             </p>
           </div>
           <Gallery_Page_Banner pageName="Gallery Page" />
+
+          <h1 className="text-3xl md:text-5xl font-bold text-center">
+          Add Your Review
+          </h1>
 
           <div
             className="my-10 p-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 

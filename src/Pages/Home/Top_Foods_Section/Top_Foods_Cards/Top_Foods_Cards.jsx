@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import BannerBtnRoundedFull from "../../../../Components/Banner_Btn/BannerBtnRoundedFull";
 import { Link } from "react-router-dom";
 const Top_Foods_Cards = ({ topFood }) => {
-  const { _id, foodName, foodImageUrl, foodCategory, price } = topFood;
+  const { _id, foodName, foodImageUrl, foodCategory, price, purchaseCount } =
+    topFood;
   return (
     <div className="card  bg-base-100 shadow-xl">
       <figure>
@@ -20,6 +21,10 @@ const Top_Foods_Cards = ({ topFood }) => {
         <h2 className="card-title">{foodName}</h2>
         <p>Category: {foodCategory}</p>
         <p>Price: {price}</p>
+        <p>
+          This food has been purchased for {purchaseCount ? purchaseCount : 0}{" "}
+          times
+        </p>
         <div className="card-actions ">
           <Link to={`/food_details/${_id}`}>
             <BannerBtnRoundedFull>View Full Food_Details</BannerBtnRoundedFull>
