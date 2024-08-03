@@ -14,7 +14,13 @@ const FoodPurchase = () => {
   const { foodName, price, foodImageUrl, quantity, email, _id } = data;
   console.log(_id);
   // fetch(`http://localhost:5000/allFoodItems/${params.id}`)
-  const { register, handleSubmit, watch, setValue } = useForm({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       foodImageUrl,
       foodName,
@@ -28,12 +34,20 @@ const FoodPurchase = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    // const quantityValue = parseInt(data.quantity, 10);
+    const quantityValue = Number(data.quantity);
+    const availableQuantity = Number(quantity);
+       if (quantityValue <= 0 || quantityValue > availableQuantity) {
+         Swal.fire("Error", "Please enter a valid quantity", "error");
+         return;
+       }
+
     if (user?.email === email) {
       Swal.fire("Error", "You cannot purchase your own food item", "error");
       return;
     }
 
-    const purchaseData = { ...data, foodId: _id };
+    const purchaseData = { ...data, quantity: quantityValue, foodId: _id};
     // send data to server in purchase collection and after sending data to server use sweet alert to show success
     axios
       .post("http://localhost:5000/purchasedFood", purchaseData)
@@ -119,18 +133,29 @@ const FoodPurchase = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Quantity</span>
+                  <span className="label-text">
+                    Enter Your Quantity.{" "}
+                    <span className="text-red-500 font-bold">
+                      Your item quantity is {quantity}
+                    </span>
+                  </span>
                 </label>
                 <input
                   type="number"
                   placeholder="quantity"
-                  {...register("quantity", { min: 1, max: quantity })}
+                  {...register("quantity", {
+                    min: { value: 1, message: "Quantity must be at least 1" },
+                    max: {
+                      value: quantity,
+                      message: `You cannot buy more than the available quantity (${quantity})`,
+                    },
+                  })}
                   className="input input-bordered"
-                  disabled={quantity === 0}
+                  disabled={quantity <= 1}
                 />
-                {watchQuantity > quantity && (
+                {errors.quantity && (
                   <p className="text-red-500 text-sm">
-                    You cannot buy more than the available quantity ({quantity})
+                    {errors.quantity.message}
                   </p>
                 )}
               </div>

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 
-const BannerBtnRoundedFull = ({children}) => {
+const BannerBtnRoundedFull = ({children}, btnData) => {
   return (
     <button className="btn bg-bannerBtnBg text-white border-none rounded-full  text-lg font-bold">
-      {children}
+      {children? children : btnData}
     </button>
   );
 };

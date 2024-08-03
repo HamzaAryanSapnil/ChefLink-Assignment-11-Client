@@ -19,6 +19,7 @@ const AddFood = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+   
     // send data to server
     axios
       .post("http://localhost:5000/allFoodItems", data)
@@ -62,6 +63,7 @@ const AddFood = () => {
                 ...data,
                 userName: user?.displayName ? user?.displayName : "",
                 email: user?.email ? user?.email : "",
+                purchaseCount: 0,
               });
             })}
           >
