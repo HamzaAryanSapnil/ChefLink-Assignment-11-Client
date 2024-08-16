@@ -25,7 +25,7 @@ const Login = () => {
         // get jwt token
         const user = { email };
         axios
-          .post("http://localhost:5000/jwt", user, {
+          .post("https://assignment-11-server-seven-pi.vercel.app/jwt", user, {
             withCredentials: true,
           })
           .then((data) => {

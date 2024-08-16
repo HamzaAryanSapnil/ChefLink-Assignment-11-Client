@@ -16,7 +16,7 @@ const MyAddedFoods = () => {
     if (user?.email) {
       setUrl(
         `/allFoodItems?email=${user?.email}`
-        // `http://localhost:5000/allFoodItems?email=${user?.email}`
+        // `https://assignment-11-server-seven-pi.vercel.app/allFoodItems?email=${user?.email}`
       );
     }
   }, [user]);
@@ -66,7 +66,9 @@ const MyAddedFoods = () => {
       .then((result) => {
         if (result.isConfirmed) {
           axios
-            .delete(`http://localhost:5000/allFoodItems/${_id}`)
+            .delete(
+              `https://assignment-11-server-seven-pi.vercel.app/allFoodItems/${_id}`
+            )
             .then((res) => {
               console.log(res.data);
               if (res.data.deletedCount > 0) {

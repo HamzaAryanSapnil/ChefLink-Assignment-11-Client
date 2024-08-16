@@ -8,12 +8,11 @@ import UseAuth from "../../Hooks/UseAuth/UseAuth";
 import Swal from "sweetalert2";
 
 const GalleryPage = () => {
-  const {user} = UseAuth();
+  const { user } = UseAuth();
   // get data from server with axios for gallery page
   const [galleryData, setGalleryData] = useState([]);
   const [feedbackData, setFeedbackData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
 
   const axiosSecure = useAxiosSecure();
   const url = "/allFoodItems";
@@ -22,7 +21,7 @@ const GalleryPage = () => {
   //       setGalleryData(res.data);
   //       setIsLoading(false);
   //     });
-  //   axios.get("http://localhost:5000/usersFeedback")
+  //   axios.get("https://assignment-11-server-seven-pi.vercel.app/usersFeedback")
   //     .then(res => {
   //       console.log( "Users feedbacks: " ,res.data);
   //     })
@@ -40,28 +39,22 @@ const GalleryPage = () => {
       }
     };
 
-
-   
-
-
     const fetchFeedbackData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/usersFeedback?email=${user?.email}`);
+        const { data } = await axios.get(
+          `https://assignment-11-server-seven-pi.vercel.app/usersFeedback?email=${user?.email}`
+        );
         console.log(data);
-          if (data && data.length > 0) {
-            const fdData = data[data.length - 1];
-            setFeedbackData(fdData?.description);
-            
-            
-            
-          }
+        if (data && data.length > 0) {
+          const fdData = data[data.length - 1];
+          setFeedbackData(fdData?.description);
+        }
         // const feedbacks = data;
         // const feedback = feedbacks.map((feedback) => {
         //   feedback.description
         // })
         // console.log(feedback);
-        
-        
+
         // const feedbackMap = feedbacks.reduce((acc, feedback) => {
         //   if (!acc[feedback.foodItemId]) {
         //     acc[feedback.foodItemId] = [];
@@ -85,52 +78,51 @@ const GalleryPage = () => {
     fetchData();
   }, [axiosSecure, feedbackData, user?.email]);
 
-
-   const addToGallery = async (email) => {
-     const { value: formValues } = await Swal.fire({
-       title: "Add a feedback in food Gallery",
-       html: `
+  const addToGallery = async (email) => {
+    const { value: formValues } = await Swal.fire({
+      title: "Add a feedback in food Gallery",
+      html: `
               <input id="swal-input1" class="swal2-input" value="${user?.displayName}" readonly>
              
               <input id="swal-input2" class="swal2-input" placeholder="Image URL">
               <input id="swal-input3" class="swal2-input" placeholder="Food Feedback" type="text">
             `,
-       focusConfirm: false,
-       showCancelButton: true,
-       preConfirm: () => {
-         return [
-           document.getElementById("swal-input1").value,
-           document.getElementById("swal-input2").value,
-           document.getElementById("swal-input3").value,
-         ];
-       },
-     });
-     if (formValues) {
-       const [name, imageUrl, description] = formValues;
-       const data = {
-         name,
-         description,
-         imageUrl,
-         email,
-
-       };
-       console.log(data);
-       axios
-         .post(`http://localhost:5000/addToGallery`, data)
-         .then((data) => {
-           if (data.data.insertedId) {
-             console.log(data.data.insertedId);
-             Swal.fire("Thank you for your contribution!");
-           }
-           
-         })
-         .catch((err) => {
-           console.error(err);
-           Swal.fire("Error", "Please try again later", "error");
-         });
-     }
-   };
-
+      focusConfirm: false,
+      showCancelButton: true,
+      preConfirm: () => {
+        return [
+          document.getElementById("swal-input1").value,
+          document.getElementById("swal-input2").value,
+          document.getElementById("swal-input3").value,
+        ];
+      },
+    });
+    if (formValues) {
+      const [name, imageUrl, description] = formValues;
+      const data = {
+        name,
+        description,
+        imageUrl,
+        email,
+      };
+      console.log(data);
+      axios
+        .post(
+          `https://assignment-11-server-seven-pi.vercel.app/addToGallery`,
+          data
+        )
+        .then((data) => {
+          if (data.data.insertedId) {
+            console.log(data.data.insertedId);
+            Swal.fire("Thank you for your contribution!");
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          Swal.fire("Error", "Please try again later", "error");
+        });
+    }
+  };
 
   return (
     <div className="p-2 xl:p-0 bg-allFoodPageBgLeft">
@@ -159,7 +151,7 @@ const GalleryPage = () => {
           <Gallery_Page_Banner pageName="Gallery Page" />
 
           <h1 className="text-3xl md:text-5xl font-bold text-center">
-          Add Your Review
+            Add Your Review
           </h1>
 
           <div

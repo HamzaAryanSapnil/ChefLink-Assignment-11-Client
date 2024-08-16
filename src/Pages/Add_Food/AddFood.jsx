@@ -19,10 +19,13 @@ const AddFood = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-   
+
     // send data to server
     axios
-      .post("http://localhost:5000/allFoodItems", data)
+      .post(
+        "https://assignment-11-server-seven-pi.vercel.app/allFoodItems",
+        data
+      )
       .then((result) => {
         console.log(result);
         if (result.data.insertedId) {
