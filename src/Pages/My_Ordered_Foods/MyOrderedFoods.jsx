@@ -41,9 +41,12 @@ const MyOrderedFoods = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/purchasedFood/${_id}`, {
-            method: "DELETE",
-          })
+          fetch(
+            `https://assignment-11-server-seven-pi.vercel.app/purchasedFood/${_id}`,
+            {
+              method: "DELETE",
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
@@ -73,13 +76,16 @@ const MyOrderedFoods = () => {
   };
 
   const handleConfirm = (_id) => {
-    fetch(`http://localhost:5000/purchasedFood/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ status: "confirm" }),
-    })
+    fetch(
+      `https://assignment-11-server-seven-pi.vercel.app/purchasedFood/${_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ status: "confirm" }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
