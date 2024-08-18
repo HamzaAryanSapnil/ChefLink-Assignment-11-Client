@@ -27,7 +27,7 @@ const AllFoods = () => {
   useEffect(() => {
     axios
       .get(
-        `https://assignment-11-server-seven-pi.vercel.app/allFoodItems?page=${currentPage}&size=${foodItemsPerPage}&sort=${
+        `http://localhost:5000/allFoodItems?page=${currentPage}&size=${foodItemsPerPage}&sort=${
           asc ? "asc" : "desc"
         }&min=${min}&max=${max}`,
         {
@@ -40,12 +40,10 @@ const AllFoods = () => {
       });
   }, [currentPage, foodItemsPerPage, asc, min, max]);
   useEffect(() => {
-    axios
-      .get("https://assignment-11-server-seven-pi.vercel.app/allFoodItemsCount")
-      .then((res) => {
-        console.log(res);
-        setTotalCount(res.data);
-      });
+    axios.get("http://localhost:5000/allFoodItemsCount").then((res) => {
+      console.log(res);
+      setTotalCount(res.data);
+    });
   }, []);
 
   const handleFoodItemsPerChange = (e) => {

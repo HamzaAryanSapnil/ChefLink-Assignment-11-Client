@@ -1,11 +1,8 @@
-
 import PropTypes from "prop-types";
-const GalleryPageCard = ({ item, galleryImg, feedback, user }) => {
-    console.log(user?.displayName, user?.email);
-  const {  foodImageUrl, } = item;
+
+const GalleryPageCard = ({item, galleryImg,  singleFeedback }) => {
+  console.log(item);
   
-
-
   return (
     <div
       className="card bg-base-100 shadow-xl hover:shadow-2xl 
@@ -13,8 +10,8 @@ const GalleryPageCard = ({ item, galleryImg, feedback, user }) => {
     >
       <figure className="">
         <img
-          src={foodImageUrl ? foodImageUrl : galleryImg}
-          alt="Shoes"
+          src={item?.foodImageUrl ? item?.foodImageUrl : galleryImg || singleFeedback?.img ? singleFeedback?.img : galleryImg }
+          alt="Gallery"
           className="h-64 w-full xl:w-96 rounded-xl"
         />
       </figure>
@@ -23,8 +20,14 @@ const GalleryPageCard = ({ item, galleryImg, feedback, user }) => {
           items-center bg-slate-900 bg-opacity-75 opacity-0 transition-opacity 
           duration-500 ease-in-out hover:opacity-100 text-white"
       >
-        <h2 className="card-title">{user?.displayName}</h2>
-        <p> {feedback} </p>
+        <h4 className="font-bold text-xl">
+          {" "}
+          {singleFeedback?.name ? singleFeedback?.name : "User"}{" "}
+        </h4>
+        <p className="">
+          {" "}
+          {singleFeedback?.name ? singleFeedback?.review : "User'Review"}{" "}
+        </p>
       </div>
     </div>
   );
@@ -33,7 +36,7 @@ const GalleryPageCard = ({ item, galleryImg, feedback, user }) => {
 GalleryPageCard.propTypes = {
   item: PropTypes.object,
   galleryImg: PropTypes.string,
-  feedback: PropTypes.array,
-  user: PropTypes.object,
+  singleFeedback: PropTypes.any,
 };
+
 export default GalleryPageCard;

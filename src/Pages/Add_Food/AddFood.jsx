@@ -22,10 +22,7 @@ const AddFood = () => {
 
     // send data to server
     axios
-      .post(
-        "https://assignment-11-server-seven-pi.vercel.app/allFoodItems",
-        data
-      )
+      .post("http://localhost:5000/allFoodItems", data)
       .then((result) => {
         console.log(result);
         if (result.data.insertedId) {

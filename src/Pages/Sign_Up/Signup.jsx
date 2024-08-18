@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "../../Hooks/UseAuth/UseAuth";
+import toast from "react-hot-toast";
 const Signup = () => {
   const { createUser, updateUserProfile } = UseAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -24,14 +26,17 @@ const Signup = () => {
         updateUserProfile(name, photoUrl)
           .then(() => {
             console.log("profile updated");
-            navigate("/");
+            navigate(location?.state ? location.state : "/");
+            toast.success("Successfully created!");
           })
-          .catch((error) => {
-            console.error(error);
+          .catch((err) => {
+            console.error(err);
+            toast.error(err?.message);
           });
       })
-      .catch((error) => {
-        console.error(error);
+      .catch((err) => {
+        console.error(err);
+        toast.error(err?.message);
       });
   };
 
